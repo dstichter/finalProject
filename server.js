@@ -1,7 +1,7 @@
-var express = require('express')
-var app = express()
+var express = require('express');
+var app = express();
 
-var logger = require('morgan')
+var logger = require('morgan');
 
 var PORT = process.env.PORT || 8000
 
@@ -12,7 +12,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(logger('dev'))
 
 app.get('*',function(req,res){
-  res.sendFile(process.cwd() + '/public/index.html')
+  res.sendFile(process.cwd() + '/index.html')
 })
 
 app.listen(PORT, function(){
