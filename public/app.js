@@ -9,16 +9,16 @@ angular.module('app', ['ui.router'])
           url: '/',
           views : {
             '':{
-              templateURL: './views/main.html'
+              templateURL: '/views/main.html'
             }, 
             'nav@home': {
-              templateURL: './views/assets/nav.html'
+              template: './views/assets/nav.html'
             }, 
             'body@home': {
-              templateURL:'./views/body.html'
+              template:'./views/body.html'
             },
             'footer@home': {
-              templateURL:'./views/assets/footer.html'
+              template:'./views/assets/footer.html'
             }
           }
         })
@@ -41,5 +41,8 @@ angular.module('app', ['ui.router'])
           }
         })
 
-      $locationProvider.html5Mode(true)
+      $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+      });
     }]);
