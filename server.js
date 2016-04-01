@@ -38,34 +38,29 @@ app.use(express.static(__dirname + '/public'));
 app.use(logger('dev'));
 
 //passport use method as callback when being authenticated
-// passport.use(new passportLocal.Strategy(function(username, password, done) {
-//   //check password in db
-//   console.log("the email is " + username);
-//   User.findOne({
-//       username: username
-//     }).then(function(user) {
-//     if(user) {
-//       console.log("The password is " + password);
-//       console.log("The hash is " + user.password);
-//       bcrypt.compare(password, user.password, function(err, bcryptUser) {
-//         console.log("The bcryptUser is " + bcryptUser);
-//         if (bcryptUser) {
-//           console.log("bcrypt user exists");
-//           //if password is correct authenticate the user with cookie
-//           done(null, user);
-//         }
-//         else {
-//           console.log("bcrypt user does not exist");
-//           done(null, null);
-//         }
-//       });
-//     }
-//     else {
-//       done(null, null);
-//     }
-//   });
-
-// }));
+passport.use(new passportLocal.Strategy(function(username, password, done) {
+  //check password in db
+  User.findOne({
+      username: username
+    }).then(function(user) {
+    if(user) {
+      bcrypt.compare(password, user.password, function(err, bcryptUser) {
+        if (bcryptUser) {
+          console.log("bcrypt user exists");
+          //if password is correct authenticate the user with cookie
+          done(null, user);
+        }
+        else {
+          console.log("bcrypt user does not exist");
+          done(null, null);
+        }
+      });
+    }
+    else {
+      done(null, null);
+    }
+  });
+}));
 
 //change the object used to authenticate to a smaller token, and protects the server from attacks
 passport.serializeUser(function(user, done) {
@@ -117,42 +112,43 @@ app.post('/createAccount', function(req, res) {
 });
 
 
-// app.post('/login', passport.authenticate('local', {
-//   successRedirect: '/',
-//   failureRedirect: '/login.html'
-// }));
+app.post('/login', passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/login.html'
+}));
 
-app.post('/login', function(req, res) {
-  var username = req.body.username;
-  var password = req.body.password;
-  User.findOne({
-      username: username
-    }).then(function(user) {
-    if(user) {
-      console.log("The hash is " + user.password);
-      bcrypt.compare(password, user.password, function(err, bcryptUser) {
-        if (bcryptUser) {
-          console.log("bcrypt user password is correct");
-          //if password is correct authenticate the user with cookie
-          //done(null, user);
-        }
-        else {
-          console.log("bcrypt password is not correct");
-          //done(null, null);
-        }
-      });
-    }
-    else {
-      console.log("the user name does not exist");
-      //done(null, null);
-    }
-  });
+// app.post('/login', function(req, res) {
+//   var username = req.body.username;
+//   var password = req.body.password;
+//   User.findOne({
+//       username: username
+//     }).then(function(user) {
+//     if(user) {
+//       console.log("The hash is " + user.password);
+//       bcrypt.compare(password, user.password, function(err, bcryptUser) {
+//         //cons
+//         if (bcryptUser) {
+//           console.log("bcrypt user password is correct");
+//           //if password is correct authenticate the user with cookie
+//           //done(null, user);
+//         }
+//         else {
+//           console.log("bcrypt password is not correct");
+//           //done(null, null);
+//         }
+//       });
+//     }
+//     else {
+//       console.log("the user name does not exist");
+//       //done(null, null);
+//     }
+//   });
 
-  // User.find({email: req.body.email, password: req.body.password}).exec().then(function(dbUser) {
-  //   console.log(" db user" + dbUser);
-  //   res.json(dbUser);
-  // });
-});
+//   // User.find({email: req.body.email, password: req.body.password}).exec().then(function(dbUser) {
+//   //   console.log(" db user" + dbUser);
+//   //   res.json(dbUser);
+//   // });
+// });
 
 app.listen(PORT, function(){
   console.log('Listening on ', PORT);
