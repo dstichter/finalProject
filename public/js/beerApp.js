@@ -1,7 +1,10 @@
 angular.module('beerApp')
 .controller('accountController', function($scope, $http) {
   $scope.createAccount = function() {
-    $http.post('/createAccount', { email: $scope.createEmail, password:$scope.createPassword })
+    $http.post('/createAccount', {
+      email: $scope.createEmail,
+      password:$scope.createPassword,
+      username:$scope.createUserName })
     .then(function(createResponse) {
       $scope.users = createResponse.data;
       console.log(createResponse.data);
@@ -9,7 +12,10 @@ angular.module('beerApp')
   }
 
   $scope.login = function() {
-    $http.post('/login', { email: $scope.email1, password:$scope.password1 })
+    $http.post('/login', {
+      email: $scope.email1,
+      password:$scope.password1,
+      username:$scope.inputUserName })
     .then(function(loginResponse) {
       $scope.users1 = loginResponse.data;
       //$scope.loggedIn = true;
