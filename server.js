@@ -35,15 +35,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(express.static(__dirname + '/public'));
-app.use(logger('dev'))
+app.use(logger('dev'));
 
 //passport use method as callback when being authenticated
-// passport.use(new passportLocal.Strategy(function(email, password, done) {
+// passport.use(new passportLocal.Strategy(function(username, password, done) {
 //   //check password in db
-//   console.log("the password is " + password);
-//   var password = req.body.password;
+//   console.log("the email is " + username);
 //   User.findOne({
-//       email: email
+//       username: username
 //     }).then(function(user) {
 //     if(user) {
 //       console.log("The password is " + password);
@@ -70,11 +69,9 @@ app.use(logger('dev'))
 
 //change the object used to authenticate to a smaller token, and protects the server from attacks
 passport.serializeUser(function(user, done) {
-  //console.log('in serializeUser', user);
   done(null, user);
 });
 passport.deserializeUser(function(user, done) {
-  //console.log('in deserializeUser', user);
   done(null, user);
 });
 
@@ -88,10 +85,11 @@ app.post('/createAccount', function(req, res) {
   console.log(req.body);
   var user = new User({
     email: req.body.email,
-    password: req.body.password
+    password: req.body.password,
+    username: req.body.username
   });
 
-  User.findOne({email: req.body.email}).exec(function(err, user1) {
+  User.findOne({username: req.body.username}).exec(function(err, user1) {
     if (err) {
       console.log(err);
       res.send(err);
@@ -121,19 +119,18 @@ app.post('/createAccount', function(req, res) {
 
 // app.post('/login', passport.authenticate('local', {
 //   successRedirect: '/',
-//   failureRedirect: '/?msg=Login Credentials do not work'
+//   failureRedirect: '/login.html'
 // }));
 
 app.post('/login', function(req, res) {
-  var email = req.body.email;
+  var username = req.body.username;
   var password = req.body.password;
   User.findOne({
-      email: email
+      username: username
     }).then(function(user) {
     if(user) {
       console.log("The hash is " + user.password);
       bcrypt.compare(password, user.password, function(err, bcryptUser) {
-        console.log("The bcryptUser is " + bcryptUser);
         if (bcryptUser) {
           console.log("bcrypt user password is correct");
           //if password is correct authenticate the user with cookie
@@ -146,7 +143,7 @@ app.post('/login', function(req, res) {
       });
     }
     else {
-      console.log("the email does not exist");
+      console.log("the user name does not exist");
       //done(null, null);
     }
   });
