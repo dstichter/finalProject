@@ -3,28 +3,28 @@ var app = express();
 var bcrypt = require('bcryptjs');
 var passport = require('passport');
 var passportLocal = require('passport-local');
-
 var logger = require('morgan');
+var mongoose = require('mongoose');
 
 var PORT = process.env.PORT || 8000;
 
-var mongoose = require('mongoose');
+//heroku mongoose connection
+//var db = 'mongodb://heroku_jwhnzdgf:6rlfhm48v9lq0nb6ath03qat01@ds011800.mlab.com:11800/heroku_jwhnzdgf'
 
-//mongoose connection
-//var db = 'mongodb://'
+//local mongoose connection
 var db = 'mongodb://localhost/beer_db';
 mongoose.connect(db);
 
 var User = require('./models/user');
 
-//body-parser setup
+//body-parser setup - middleware
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
 
-//setup for passport
+//setup for passport - middleware
 app.use(require('express-session')({
     secret: 'abcd',
     resave: true,
@@ -71,7 +71,7 @@ passport.deserializeUser(function(user, done) {
 });
 
 
-app.get('*',function(req,res){
+app.get('/',function(req,res){
   res.sendFile(process.cwd() + '/public/login.html')
 })
 
