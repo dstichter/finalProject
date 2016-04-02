@@ -140,8 +140,5 @@ app.post('/login', passport.authenticate('local', {
 
 app.listen(PORT, function(){
   console.log('Listening on ', PORT);
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> e0ab11218faefb2753515958a60118c2da1325bf
+
