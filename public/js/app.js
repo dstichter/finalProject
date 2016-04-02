@@ -1,1 +1,1 @@
-angular.module('beerApp', []);
+angular.module('app', []);

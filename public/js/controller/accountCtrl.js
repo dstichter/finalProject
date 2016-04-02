@@ -1,4 +1,4 @@
-angular.module('beerApp')
+angular.module('app')
 .controller('accountController', function($scope, $http) {
   $scope.createAccount = function() {
     $http.post('/createAccount', {
