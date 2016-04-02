@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+<<<<<<< HEAD
 var bcrypt = require('bcryptjs');
 var passport = require('passport');
 var passportLocal = require('passport-local');
@@ -74,6 +75,22 @@ passport.deserializeUser(function(user, done) {
 app.get('/',function(req,res){
   res.sendFile(process.cwd() + '/public/login.html')
 })
+=======
+
+var logger = require('morgan');
+
+var PORT = process.env.PORT || 8000;
+
+var mongoose = require('mongoose');
+var db = 'mongodb://';
+
+app.use(express.static(__dirname + '/public'));
+app.use(logger('dev'));
+
+app.get('/', function(req,res){
+res.sendFile(__dirname + '/index.html');
+});
+>>>>>>> e0ab11218faefb2753515958a60118c2da1325bf
 
 //posts the create account form information to mongodb
 app.post('/createAccount', function(req, res) {
@@ -125,4 +142,8 @@ app.post('/login', passport.authenticate('local', {
 
 app.listen(PORT, function(){
   console.log('Listening on ', PORT);
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> e0ab11218faefb2753515958a60118c2da1325bf
