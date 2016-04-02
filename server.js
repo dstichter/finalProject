@@ -88,7 +88,6 @@ app.use(logger('dev'));
 app.get('/', function(req,res){
 res.sendFile(__dirname + '/index.html');
 });
->>>>>>> e0ab11218faefb2753515958a60118c2da1325bf
 
 //posts the create account form information to mongodb
 app.post('/createAccount', function(req, res) {
