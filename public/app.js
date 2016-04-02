@@ -1,13 +1,26 @@
-angular.module('app', ['ui.router'])
-  .config(function($stateProvider, $urlRouterProvider, $locationProvider){
-    $urlRouterProvider.otherwise('/home');
-    $stateProvider
-      .state('home', {
-        url: '/',
-        templateUrl: 'views/body.html'
-      })
-      $locationProvider.html5Mode({
-        enabled: true,
-        requireBase: false
-      });
-    });
+angular.module('beerApp', ['ui.router'])
+ .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+   $urlRouterProvider.otherwise('/');
+   $stateProvider
+     .state('main', {
+       url: '/',
+       views: {
+         '': {
+           templateUrl: '/views/main.html'
+         },
+         'nav@main': {
+           templateUrl: '/views/assets/nav.html'
+         },
+         'body@main': {
+           templateUrl: '/views/body.html'
+         },
+         'footer@main': {
+           templateUrl: '/views/assets/footer.html'
+         }
+       }
+     })
+     $locationProvider.html5Mode({
+       enabled: true,
+       requireBase: false
+     });
+ });
