@@ -11,6 +11,8 @@ var PORT = process.env.PORT || 8000;
 //brewerydb
 var Brewerydb = require('brewerydb-node')
 var brewdb = new Brewerydb('c356754ec7ae15423029d49c154921c0')
+//http
+var http = require('http')
 
 //heroku mongoose connection
 //var db = 'mongodb://heroku_jwhnzdgf:6rlfhm48v9lq0nb6ath03qat01@ds011800.mlab.com:11800/heroku_jwhnzdgf'
@@ -122,7 +124,26 @@ app.post('/login', passport.authenticate('local', {
 }));
 
 app.post('/apiCall', function(req,res){
-  console.log(req.body);
+console.log(req.body);
+  var apiUrl
+  var replaced = req.body.search.replace(/ /g, '%20');
+  if(req.body.searchType == 'postalCode'){
+    apiUrl = '/v2/locations/?key=c356754ec7ae15423029d49c154921c0&postalCode=' + req.body.search
+  }
+  if(req.body.searchType == 'city'){
+        apiUrl = '/v2/locations/?key=c356754ec7ae15423029d49c154921c0&locality=' + replaced
+  }
+  if(req.body.searchType == 'state'){
+        apiUrl = '/v2/locations/?key=c356754ec7ae15423029d49c154921c0&region=' + replaced
+  }
+  var options = {
+    host: 'api.brewerydb.com',
+    path: apiUrl,
+  };
+  var req = http.get(options, function(res) {
+    console.log('test');
+    console.log(res);
+  });
 })
 
 //   // User.find({email: req.body.email, password: req.body.password}).exec().then(function(dbUser) {
