@@ -8,6 +8,10 @@ var mongoose = require('mongoose');
 
 var PORT = process.env.PORT || 8000;
 
+//brewerydb
+var Brewerydb = require('brewerydb-node')
+var brewdb = new Brewerydb('c356754ec7ae15423029d49c154921c0')
+
 //heroku mongoose connection
 //var db = 'mongodb://heroku_jwhnzdgf:6rlfhm48v9lq0nb6ath03qat01@ds011800.mlab.com:11800/heroku_jwhnzdgf'
 
@@ -34,7 +38,7 @@ app.use(require('express-session')({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static('public'));
 app.use(logger('dev'));
 
 //passport use method as callback when being authenticated
@@ -74,21 +78,6 @@ passport.deserializeUser(function(user, done) {
 app.get('/',function(req,res){
   res.sendFile(__dirname + '/index.html');
 });
-
-var logger = require('morgan');
-
-var PORT = process.env.PORT || 8000;
-
-var mongoose = require('mongoose');
-var db = 'mongodb://';
-
-app.use(express.static(__dirname + '/public'));
-app.use(logger('dev'));
-
-app.get('/', function(req,res){
-res.sendFile(__dirname + '/index.html');
-});
->>>>>>> e0ab11218faefb2753515958a60118c2da1325bf
 
 //posts the create account form information to mongodb
 app.post('/createAccount', function(req, res) {
@@ -132,6 +121,10 @@ app.post('/login', passport.authenticate('local', {
   failureRedirect: '/login.html'
 }));
 
+app.post('/apiCall', function(req,res){
+  console.log(req.body);
+})
+
 //   // User.find({email: req.body.email, password: req.body.password}).exec().then(function(dbUser) {
 //   //   console.log(" db user" + dbUser);
 //   //   res.json(dbUser);
@@ -141,4 +134,3 @@ app.post('/login', passport.authenticate('local', {
 app.listen(PORT, function(){
   console.log('Listening on ', PORT);
 });
-
