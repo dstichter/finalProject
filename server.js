@@ -1,6 +1,5 @@
 var express = require('express');
 var app = express();
-<<<<<<< HEAD
 var bcrypt = require('bcryptjs');
 var passport = require('passport');
 var passportLocal = require('passport-local');
@@ -73,9 +72,8 @@ passport.deserializeUser(function(user, done) {
 
 
 app.get('/',function(req,res){
-  res.sendFile(process.cwd() + '/public/login.html')
-})
-=======
+  res.sendFile(__dirname + '/index.html');
+});
 
 var logger = require('morgan');
 
