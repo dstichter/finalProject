@@ -1,14 +1,14 @@
-var express = require('express')
-var app = express()
+var express = require('express');
+var app = express();
 var bcrypt = require('bcryptjs');
 var passport = require('passport');
 var passportLocal = require('passport-local');
 
-var logger = require('morgan')
+var logger = require('morgan');
 
-var PORT = process.env.PORT || 8000
+var PORT = process.env.PORT || 8000;
 
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
 
 //mongoose connection
 //var db = 'mongodb://'
