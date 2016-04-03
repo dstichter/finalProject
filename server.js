@@ -95,41 +95,32 @@ app.post('/createAccount', function(req, res) {
     } else {
       if (user1 === null) {
         user.save();
+        res.json(user1);
         console.log('user saved');
       } else {
+        res.json(user1);
         console.log("user exists");
       }
     }
   });
-
-  // user.save(function(err) {
-  //   if (err) {
-  //     console.log(err);
-  //     res.send(err);
-  //   } else {
-  //     User.find({}).then(function(dbUser) {
-  //       //console.log(" contact me" + dbUser);
-  //       res.json(dbUser);
-  //     });
-  //   }
-  // });
 });
 
+app.post('/login', passport.authenticate('local'), function(req, res) {
+    if(req.user) {
+      res.json(req.user);
+    } else {
+      res.json({});
+    }
+  });
 
-app.post('/login', passport.authenticate('local', {
-  successRedirect: '/',
-  failureRedirect: '/login.html'
-}));
+// app.post('/login', passport.authenticate('local', {
+//   successRedirect: '/',
+//   failureRedirect: '/login.html'
+// }));
 
 app.post('/apiCall', function(req,res){
   console.log(req.body);
-})
-
-//   // User.find({email: req.body.email, password: req.body.password}).exec().then(function(dbUser) {
-//   //   console.log(" db user" + dbUser);
-//   //   res.json(dbUser);
-//   // });
-// });
+});
 
 app.listen(PORT, function(){
   console.log('Listening on ', PORT);
