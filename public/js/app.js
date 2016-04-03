@@ -12,14 +12,14 @@ angular.module('beerApp', ['ui.router'])
             templateUrl: '/views/assets/nav.html'
           },
           'body@main': {
-            templateUrl: '/views/body.html'
+            templateUrl: '/views/partials/body.html'
           },
           'api-partial@main': {
             templateUrl: '/views/partials/api-partial.html',
             controller: 'apiController'
           }
         }
-      })
+      });
       $locationProvider.html5Mode({
         enabled: true,
         requireBase: false
