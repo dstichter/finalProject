@@ -9,8 +9,8 @@ var mongoose = require('mongoose');
 var PORT = process.env.PORT || 8000;
 
 //brewerydb
-var Brewerydb = require('brewerydb-node')
-var brewdb = new Brewerydb('c356754ec7ae15423029d49c154921c0')
+// var Brewerydb = require('brewerydb-node')
+// var brewdb = new Brewerydb('c356754ec7ae15423029d49c154921c0')
 
 //heroku mongoose connection
 //var db = 'mongodb://heroku_jwhnzdgf:6rlfhm48v9lq0nb6ath03qat01@ds011800.mlab.com:11800/heroku_jwhnzdgf'
