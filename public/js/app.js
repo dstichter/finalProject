@@ -12,7 +12,7 @@ angular.module('beerApp', ['ui.router'])
             templateUrl: '/views/assets/nav.html'
           },
           'body@main': {
-            templateUrl: '/views/partials/body.html'
+            templateUrl: '/views/body.html'
           },
           'api-partial@main': {
             templateUrl: '/views/partials/api-partial.html',
