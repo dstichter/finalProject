@@ -13,10 +13,10 @@ var PORT = process.env.PORT || 8000;
 // var brewdb = new Brewerydb('c356754ec7ae15423029d49c154921c0')
 
 //heroku mongoose connection
-//var db = 'mongodb://heroku_jwhnzdgf:6rlfhm48v9lq0nb6ath03qat01@ds011800.mlab.com:11800/heroku_jwhnzdgf'
+var db = 'mongodb://heroku_jwhnzdgf:6rlfhm48v9lq0nb6ath03qat01@ds011800.mlab.com:11800/heroku_jwhnzdgf'
 
 //local mongoose connection
-var db = 'mongodb://localhost/beer_db';
+// var db = 'mongodb://localhost/beer_db';
 mongoose.connect(db);
 
 var User = require('./models/user');
