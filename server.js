@@ -33,7 +33,7 @@ app.use(require('express-session')({
     secret: 'abcd',
     resave: true,
     saveUninitialized: true,
-    cookie : { secure : false, maxAge : (4 * 60 * 60 * 1000) }, // 4 hours
+    cookie : { secure : false, maxAge : (240 * 60000) }, // 4 hours
 }));
 app.use(passport.initialize());
 app.use(passport.session());
