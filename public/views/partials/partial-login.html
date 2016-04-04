@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html ng-app="beerApp">
-<head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="frontend.css">
-  <title>Contact</title>
-</head>
-<body>
+
   <div class="container">
     <div class="row">
       <div class="col-md-2"></div>
@@ -38,7 +31,7 @@
     <div class="row">
       <div class="col-md-2"></div>
       <div class="col-md-10">
-        <h2>Create An Account</h2>
+        <h2>Register</h2>
       </div>
     </div>
     <div class="row" ng-controller="accountController">
@@ -57,18 +50,11 @@
             <label for="createUserName">User Name</label>
             <input type="text" ng-model="createUserName" class="form-control" id="createUserName" placeholder="User Name" name="createUserName">
           </div>
-          <button type="submit" class="btn btn-default">Create Account</button>
+          <button type="submit" class="btn btn-default">Register</button>
         </form>
       </div>
     </div>
   </div>
 
-<!-- angular.js CDN -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js"></script>
-<!-- custom scripts -->
-  <script type="text/javascript" src="/js/app.js"></script>
-  <script type="text/javascript" src="/js/controller/accountCtrl.js"></script>
 
-</body>
-</html>
+

@@ -8,11 +8,9 @@ var mongoose = require('mongoose');
 
 var PORT = process.env.PORT || 8000;
 
-//brewerydb
-var Brewerydb = require('brewerydb-node')
-var brewdb = new Brewerydb('c356754ec7ae15423029d49c154921c0')
 //http
 var http = require('http')
+
 
 //heroku mongoose connection
 //var db = 'mongodb://heroku_jwhnzdgf:6rlfhm48v9lq0nb6ath03qat01@ds011800.mlab.com:11800/heroku_jwhnzdgf'
@@ -35,7 +33,7 @@ app.use(require('express-session')({
     secret: 'abcd',
     resave: true,
     saveUninitialized: true,
-    cookie : { secure : false, maxAge : (4 * 60 * 60 * 1000) }, // 4 hours
+    cookie : { secure : false, maxAge : (240 * 60000) }, // 4 hours
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -97,34 +95,30 @@ app.post('/createAccount', function(req, res) {
     } else {
       if (user1 === null) {
         user.save();
+        res.json(user1);
         console.log('user saved');
       } else {
+        res.json(user1);
         console.log("user exists");
       }
     }
   });
-
-  // user.save(function(err) {
-  //   if (err) {
-  //     console.log(err);
-  //     res.send(err);
-  //   } else {
-  //     User.find({}).then(function(dbUser) {
-  //       //console.log(" contact me" + dbUser);
-  //       res.json(dbUser);
-  //     });
-  //   }
-  // });
 });
 
+app.post('/login', passport.authenticate('local'), function(req, res) {
+    if(req.user) {
+      res.json(req.user);
+    } else {
+      res.json({});
+    }
+  });
 
-app.post('/login', passport.authenticate('local', {
-  successRedirect: '/',
-  failureRedirect: '/login.html'
-}));
+// app.post('/login', passport.authenticate('local', {
+//   successRedirect: '/',
+//   failureRedirect: '/login.html'
+// }));
 
 app.post('/apiCall', function(req,res){
-console.log(req.body);
   var apiUrl
   var replaced = req.body.search.replace(/ /g, '%20');
   if(req.body.searchType == 'postalCode'){
@@ -151,6 +145,7 @@ console.log(req.body);
 //   //   res.json(dbUser);
 //   // });
 // });
+
 
 app.listen(PORT, function(){
   console.log('Listening on ', PORT);

@@ -19,7 +19,7 @@ angular.module('beerApp', ['ui.router'])
             controller: 'apiController'
           }
         }
-      })
+      });
       $locationProvider.html5Mode({
         enabled: true,
         requireBase: false
