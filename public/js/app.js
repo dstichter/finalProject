@@ -15,7 +15,7 @@ angular.module('beerApp', ['ui.router'])
             templateUrl: '/views/body.html'
           },
           'api-partial@main': {
-            templateUrl: '/views/partials/api-partial.html',
+            templateUrl: '/views/partials/search-partial.html',
             controller: 'apiController'
           }
         }
