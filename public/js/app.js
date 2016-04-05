@@ -27,16 +27,12 @@ angular.module('beerApp', ['ui.router'])
           '': {
             templateUrl: 'views/main.html'
           },
-          'nav@main': {
+          'nav@register': {
             templateUrl: '/views/assets/nav.html'
           },
-          'body@main': {
+          'body@register': {
             templateUrl: '/views/partials/partial-login.html',
             controller: 'accountCrtl'
-          },
-          'api-partial@main': {
-            templateUrl: '/views/partials/api-partial.html',
-            controller: 'apiController'
           }
         }
       })
