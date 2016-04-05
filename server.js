@@ -111,6 +111,7 @@ app.post('/login', passport.authenticate('local'), function(req, res) {
       res.json(req.user);
     } else {
       res.json({});
+      console.log("the login failed");
     }
   });
 
