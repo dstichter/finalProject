@@ -21,6 +21,21 @@ angular.module('beerApp', ['ui.router'])
         }
       })
 
+      .state('login', {
+        url: '/login',
+        views: {
+          '': {
+            templateUrl: 'views/main.html'
+          },
+          'nav@login': {
+            templateUrl: '/views/assets/nav.html'
+          },
+          'body@login': {
+            templateUrl: '/views/partials/partial-login.html'
+          }
+        }
+      })
+
       .state('register', {
         url: '/register',
         views: {
@@ -31,8 +46,7 @@ angular.module('beerApp', ['ui.router'])
             templateUrl: '/views/assets/nav.html'
           },
           'body@register': {
-            templateUrl: '/views/partials/partial-login.html',
-            controller: 'accountCrtl'
+            templateUrl: '/views/partials/partial-register.html'
           }
         }
       })
