@@ -8,13 +8,13 @@ angular.module('beerApp')
     .then(function(createResponse) {
       if (createResponse.data === null) {
         console.log("the user is saved");
-        console.log(createResponse.data);
+        // console.log(createResponse.data);
         $location.path('/login');
 
       } else {
         console.log("the user exists");
-        console.log(createResponse.data);
-        $location.path('/');
+        // console.log(createResponse.data);
+        $location.path('/register');
       }
       $scope.users = createResponse.data;
     });
@@ -31,7 +31,7 @@ angular.module('beerApp')
       $rootScope.current_user = loginResponse.data.username;
       $location.path('/');
       console.log("the user is logged in");
-      console.log(loginResponse.data.username);
+      // console.log(loginResponse.data.username);
       // console.log(loginResponse.data);
       // console.log(loginResponse);
       }
