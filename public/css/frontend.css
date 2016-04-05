@@ -16,7 +16,6 @@
 height: 45px; 
 width: 40px ;
 padding-bottom: 15px;
-margin-bottom: 55px;
 }
 
 
@@ -32,4 +31,23 @@ margin-bottom: 55px;
 /*login and register css*/
 .panel {
 	margin-top: 100px;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #c44102
 }
