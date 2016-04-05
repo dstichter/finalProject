@@ -5,10 +5,28 @@
  margin-bottom: 75px;
 }
 
+#linePic{
+  background-image: url('/images/newG.jpg');
+  background-position: 77% 37%;
+  background-size: 1200px 1200px;
+  background-repeat: no-repeat;
+}
+
+/*#chaserIcon { 
+need to resize the image for the brand icon
+}
+*/
+
 .beerText{
   color: #FFF ;
+  text-shadow: 1px 1px #000
 }
 
 #viewBox{
   background-color: #c44102
+}
+
+/*login and register css*/
+.panel {
+	margin-top: 100px;
 }
