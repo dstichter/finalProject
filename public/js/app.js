@@ -17,6 +17,9 @@ angular.module('beerApp', ['ui.router'])
           'api-partial@main': {
             templateUrl: '/views/partials/search-partial.html',
             controller: 'apiController'
+          },
+          'footer@main':{
+            templateUrl: '/views/assets/footer.html'
           }
         }
       })
@@ -32,6 +35,9 @@ angular.module('beerApp', ['ui.router'])
           },
           'body@login': {
             templateUrl: '/views/partials/partial-login.html'
+          },
+          'footer@login':{
+            templateUrl: '/views/assets/footer.html'
           }
         }
       })
@@ -47,6 +53,9 @@ angular.module('beerApp', ['ui.router'])
           },
           'body@register': {
             templateUrl: '/views/partials/partial-register.html'
+          },
+          'footer@register':{
+            templateUrl: '/views/assets/footer.html'
           }
         }
       })
