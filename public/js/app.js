@@ -19,7 +19,24 @@ angular.module('beerApp', ['ui.router'])
             controller: 'apiController'
           }
         }
-      });
+      })
+
+      .state('register', {
+        url: '/register',
+        views: {
+          '': {
+            templateUrl: 'views/main.html'
+          },
+          'nav@register': {
+            templateUrl: '/views/assets/nav.html'
+          },
+          'body@register': {
+            templateUrl: '/views/partials/partial-login.html',
+            controller: 'accountCrtl'
+          }
+        }
+      })
+
       $locationProvider.html5Mode({
         enabled: true,
         requireBase: false
