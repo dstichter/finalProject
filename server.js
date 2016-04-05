@@ -106,6 +106,7 @@ app.post('/createAccount', function(req, res) {
 });
 
 app.post('/login', passport.authenticate('local'), function(req, res) {
+    console.log(req.body);
     if(req.user) {
       res.json(req.user);
     } else {
@@ -139,12 +140,6 @@ app.post('/apiCall', function(req,res){
     console.log(res);
   });
 })
-
-//   // User.find({email: req.body.email, password: req.body.password}).exec().then(function(dbUser) {
-//   //   console.log(" db user" + dbUser);
-//   //   res.json(dbUser);
-//   // });
-// });
 
 
 app.listen(PORT, function(){
