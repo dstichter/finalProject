@@ -9,7 +9,7 @@ angular.module('beerApp')
       if (createResponse.data === null) {
         console.log("the user is saved");
         console.log(createResponse.data);
-        $location.path('/');
+        $location.path('/login');
 
       } else {
         console.log("the user exists");
