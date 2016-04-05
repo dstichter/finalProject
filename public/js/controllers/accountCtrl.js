@@ -32,6 +32,8 @@ angular.module('beerApp')
       $location.path('/');
       console.log("the user is logged in");
       console.log(loginResponse.data.username);
+      // console.log(loginResponse.data);
+      // console.log(loginResponse);
       }
     });
   };
