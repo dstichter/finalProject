@@ -12,10 +12,13 @@
   background-repeat: no-repeat;
 }
 
-/*#chaserIcon { 
-need to resize the image for the brand icon
+#chaserIcon { 
+height: 45px; 
+width: 40px ;
+padding-bottom: 15px;
+margin-bottom: 55px;
 }
-*/
+
 
 .beerText{
   color: #FFF ;
