@@ -14,10 +14,6 @@ angular.module('beerApp', ['ui.router'])
           'body@main': {
             templateUrl: '/views/body.html'
           },
-          'api-partial@main': {
-            templateUrl: '/views/partials/search-partial.html',
-            controller: 'apiController'
-          },
           'footer@main':{
             templateUrl: '/views/assets/footer.html'
           }
@@ -34,7 +30,8 @@ angular.module('beerApp', ['ui.router'])
             templateUrl: '/views/assets/nav.html'
           },
           'body@search': {
-            templateUrl: '/views/partials/search-partial.html'
+            templateUrl: '/views/partials/search-partial.html',
+            controller: 'apiController'
           },
           'footer@search':{
             templateUrl: '/views/assets/footer.html'
@@ -78,8 +75,8 @@ angular.module('beerApp', ['ui.router'])
         }
       })
 
-      $locationProvider.html5Mode({
-        enabled: true,
-        requireBase: false
-      });
+    $locationProvider.html5Mode({
+      enabled: true,
+      requireBase: false
+    });
   });
