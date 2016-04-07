@@ -10,13 +10,25 @@
         <div class="panel-body">
           <input type="text" ng-model='searchVal' autofocus >
           <select ng-model='searchType'>
-            <option>postalCode</option>
-            <option>city</option>
-            <option>state</option>
+            <option>Postal Code</option>
+            <option>City</option>
+            <option>State</option>
           </select>
           <button type="button" name="button" ng-click='breweryApiCall()'>Search</button>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <ul>
+        <li ng-repeat='res in breweryApi' ng-click='beerApiCall(res.brewery.id)'>{{ res.brewery.name }}: {{ res.locality }} : {{ res.locationTypeDisplay}} : {{ res.streetAddress}}</li>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <ul>
+        <li ng-repeat='res2 in beerApi'> {{ res2.nameDisplay }} :  {{ res2.abv }} : {{ res2.description }} :::  {{ res2.available.description}}</li>
+      </ul>
     </div>
   </div>
 </div>

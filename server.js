@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 var PORT = process.env.PORT || 8000;
 
 //http
-var http = require('http')
+var request = require('request')
 
 
 //heroku mongoose connection
@@ -121,25 +121,26 @@ app.post('/login', passport.authenticate('local'), function(req, res) {
 // }));
 
 app.post('/apiCall', function(req,res){
-  var apiUrl
+  var apiUrl = 'http://api.brewerydb.com'
   var replaced = req.body.search.replace(/ /g, '%20');
-  if(req.body.searchType == 'postalCode'){
-    apiUrl = '/v2/locations/?key=c356754ec7ae15423029d49c154921c0&postalCode=' + req.body.search
+  if(req.body.searchType == 'Postal Code'){
+    apiUrl += '/v2/locations/?key=c356754ec7ae15423029d49c154921c0&postalCode=' + req.body.search
   }
-  if(req.body.searchType == 'city'){
-        apiUrl = '/v2/locations/?key=c356754ec7ae15423029d49c154921c0&locality=' + replaced
+  if(req.body.searchType == 'City'){
+        apiUrl += '/v2/locations/?key=c356754ec7ae15423029d49c154921c0&locality=' + replaced
   }
-  if(req.body.searchType == 'state'){
-        apiUrl = '/v2/locations/?key=c356754ec7ae15423029d49c154921c0&region=' + replaced
+  if(req.body.searchType == 'State'){
+        apiUrl += '/v2/locations/?key=c356754ec7ae15423029d49c154921c0&region=' + replaced
   }
-  var options = {
-    host: 'api.brewerydb.com',
-    path: apiUrl,
-  };
-  var req = http.get(options, function(res) {
-    console.log('test');
-    console.log(res);
-  });
+  request(apiUrl, function(err, response, body) {
+    res.json(body)
+  })
+})
+app.post('/beerApiCall', function(req,res){
+    var apiUrl = 'http://api.brewerydb.com/v2/brewery/'+ req.body.id +'/beers/?key=c356754ec7ae15423029d49c154921c0'
+    request(apiUrl, function(err, response, body) {
+      res.json(body)
+    })
 })
 
 
