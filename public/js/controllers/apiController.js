@@ -15,6 +15,7 @@ angular.module('beerApp').controller('apiController', function($scope, $http) {
     //  $http.get('http://api.brewerydb.com/v2/brewery/'+ $scope.breweryId +'/beers/?key=c356754ec7ae15423029d49c154921c0').then(function(response) {
     //    $scope.beers = response.data
     //  })
+    console.log(breweryId);
     $http.post('/beerApiCall', {
       id: breweryId
     }).then(function(response){
