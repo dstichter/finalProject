@@ -124,20 +124,20 @@ app.post('/apiCall', function(req,res){
   var apiUrl = 'http://api.brewerydb.com'
   var replaced = req.body.search.replace(/ /g, '%20');
   if(req.body.searchType == 'Postal Code'){
-    apiUrl += '/v2/locations/?key=c356754ec7ae15423029d49c154921c0&postalCode=' + req.body.search
+    apiUrl += '/v2/locations/?key=99a3c1bfb6b01f411310b5b729f48491&postalCode=' + req.body.search
   }
   if(req.body.searchType == 'City'){
-        apiUrl += '/v2/locations/?key=c356754ec7ae15423029d49c154921c0&locality=' + replaced
+        apiUrl += '/v2/locations/?key=99a3c1bfb6b01f411310b5b729f48491&locality=' + replaced
   }
   if(req.body.searchType == 'State'){
-        apiUrl += '/v2/locations/?key=c356754ec7ae15423029d49c154921c0&region=' + replaced
+        apiUrl += '/v2/locations/?key=99a3c1bfb6b01f411310b5b729f48491&region=' + replaced
   }
   request(apiUrl, function(err, response, body) {
     res.json(body)
   })
 })
 app.post('/beerApiCall', function(req,res){
-    var apiUrl = 'http://api.brewerydb.com/v2/brewery/'+ req.body.id +'/beers/?key=c356754ec7ae15423029d49c154921c0'
+    var apiUrl = 'http://api.brewerydb.com/v2/brewery/'+ req.body.id +'/beers/?key=99a3c1bfb6b01f411310b5b729f48491'
     request(apiUrl, function(err, response, body) {
       res.json(body)
     })
@@ -146,10 +146,10 @@ app.post('/navbarApiCall', function(req,res){
   var apiUrl
   var replaced = req.body.name.replace(/ /g, '%20');
   if(req.body.type == 'Beer'){
-    apiUrl = 'http://api.brewerydb.com/v2/beers/?key=c356754ec7ae15423029d49c154921c0&name=' + replaced
+    apiUrl = 'http://api.brewerydb.com/v2/beers/?key=99a3c1bfb6b01f411310b5b729f48491&name=' + replaced
   }
   if(req.body.type == 'Brewery'){
-    apiUrl = 'http://api.brewerydb.com/v2/breweries/?key=c356754ec7ae15423029d49c154921c0&name=' + replaced
+    apiUrl = 'http://api.brewerydb.com/v2/breweries/?key=99a3c1bfb6b01f411310b5b729f48491&name=' + replaced
   }
     request(apiUrl, function(err, response, body) {
       res.json(body)
