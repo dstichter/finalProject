@@ -123,13 +123,13 @@ app.post('/login', passport.authenticate('local'), function(req, res) {
 app.post('/apiCall', function(req,res){
   var apiUrl = 'http://api.brewerydb.com'
   var replaced = req.body.search.replace(/ /g, '%20');
-  if(req.body.searchType == 'postalCode'){
+  if(req.body.searchType == 'Postal Code'){
     apiUrl += '/v2/locations/?key=c356754ec7ae15423029d49c154921c0&postalCode=' + req.body.search
   }
-  if(req.body.searchType == 'city'){
+  if(req.body.searchType == 'City'){
         apiUrl += '/v2/locations/?key=c356754ec7ae15423029d49c154921c0&locality=' + replaced
   }
-  if(req.body.searchType == 'state'){
+  if(req.body.searchType == 'State'){
         apiUrl += '/v2/locations/?key=c356754ec7ae15423029d49c154921c0&region=' + replaced
   }
   request(apiUrl, function(err, response, body) {
