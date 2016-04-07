@@ -12,12 +12,18 @@ angular.module('beerApp').controller('apiController', function($scope, $http) {
     })
   }
   $scope.beerApiCall = function(breweryId){
-    //  $http.get('http://api.brewerydb.com/v2/brewery/'+ $scope.breweryId +'/beers/?key=c356754ec7ae15423029d49c154921c0').then(function(response) {
-    //    $scope.beers = response.data
-    //  })
-    console.log(breweryId);
     $http.post('/beerApiCall', {
       id: breweryId
+    }).then(function(response){
+      var result = JSON.parse(response.data);
+      console.log(result);
+      $scope.beerApi = result.data;
+    })
+  }
+  $scope.navbarSearch = function(){
+    $http.post('/navbarApiCall', {
+      name: $scope.searchName,
+      type: $scope.type
     }).then(function(response){
       var result = JSON.parse(response.data);
       console.log(result);
