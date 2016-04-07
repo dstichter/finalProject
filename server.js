@@ -142,6 +142,19 @@ app.post('/beerApiCall', function(req,res){
       res.json(body)
     })
 })
+app.post('/navbarApiCall', function(req,res){
+  var apiUrl
+  var replaced = req.body.name.replace(/ /g, '%20');
+  if(req.body.type == 'Beer'){
+    apiUrl = 'http://api.brewerydb.com/v2/beers/?key=c356754ec7ae15423029d49c154921c0&name=' + replaced
+  }
+  if(req.body.type == 'Brewery'){
+    apiUrl = 'http://api.brewerydb.com/v2/breweries/?key=c356754ec7ae15423029d49c154921c0&name=' + replaced
+  }
+    request(apiUrl, function(err, response, body) {
+      res.json(body)
+    })
+})
 
 
 app.listen(PORT, function(){

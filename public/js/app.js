@@ -9,7 +9,8 @@ angular.module('beerApp', ['ui.router'])
             templateUrl: 'views/main.html'
           },
           'nav@main': {
-            templateUrl: '/views/assets/nav.html'
+            templateUrl: '/views/assets/nav.html',
+            controller: 'apiController'
           },
           'body@main': {
             templateUrl: '/views/body.html'
