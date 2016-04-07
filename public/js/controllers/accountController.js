@@ -22,7 +22,6 @@ angular.module('beerApp')
 
   $scope.login = function() {
     $http.post('/login', {
-      email: $scope.email1,
       password:$scope.password1,
       username:$scope.inputUserName })
     .then(function(loginResponse) {
