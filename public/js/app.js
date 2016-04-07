@@ -14,9 +14,45 @@ angular.module('beerApp', ['ui.router'])
           'body@main': {
             templateUrl: '/views/body.html'
           },
-          'api-partial@main': {
-            templateUrl: '/views/partials/api-partial.html',
+          'footer@main':{
+            templateUrl: '/views/assets/footer.html'
+          }
+        }
+      })
+
+      .state('search', {
+        url: '/search',
+        views: {
+          '': {
+            templateUrl: 'views/main.html'
+          },
+          'nav@search': {
+            templateUrl: '/views/assets/nav.html'
+          },
+          'body@search': {
+            templateUrl: '/views/partials/search-partial.html',
             controller: 'apiController'
+          },
+          'footer@search':{
+            templateUrl: '/views/assets/footer.html'
+          }
+        }
+      })
+
+      .state('login', {
+        url: '/login',
+        views: {
+          '': {
+            templateUrl: 'views/main.html'
+          },
+          'nav@login': {
+            templateUrl: '/views/assets/nav.html'
+          },
+          'body@login': {
+            templateUrl: '/views/partials/partial-login.html'
+          },
+          'footer@login':{
+            templateUrl: '/views/assets/footer.html'
           }
         }
       })
@@ -31,14 +67,16 @@ angular.module('beerApp', ['ui.router'])
             templateUrl: '/views/assets/nav.html'
           },
           'body@register': {
-            templateUrl: '/views/partials/partial-login.html',
-            controller: 'accountCrtl'
+            templateUrl: '/views/partials/partial-register.html'
+          },
+          'footer@register':{
+            templateUrl: '/views/assets/footer.html'
           }
         }
       })
 
-      $locationProvider.html5Mode({
-        enabled: true,
-        requireBase: false
-      });
+    $locationProvider.html5Mode({
+      enabled: true,
+      requireBase: false
+    });
   });
