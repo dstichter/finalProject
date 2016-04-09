@@ -61,7 +61,7 @@ passport.use(new passportLocal.Strategy(function(username, password, done) {
       });
     }
     else {
-      done(null, null);
+      done(null, {msg: false});
     }
   });
 }));
