@@ -1,27 +1,19 @@
 angular.module('beerApp')
-.controller('accountController', function($scope, $http, $rootScope, $location) {
-  $scope.login = function() {
-    $http.post('/logout',)
+.controller('logoutController', function($scope, $http, $rootScope, $location) {
+  $rootScope.logout = function() {
+    $http.post('/logout')
     .then(function(logoutResponse) {
       // console.log(logoutResponse.status);
-      // console.log(logoutResponse.data);
-      if(loginResponse.data) {
+      console.log("logging out");
+      console.log(logoutResponse.data);
+      if(logoutResponse.data) {
       $rootScope.authenticated = false;
       $rootScope.current_user = '';
-      $location.path('/loginResponse');
-      //console.log("the user is logged out");
+      $location.path('/login');
+      console.log("the user is logged out");
       }
     });
   };
-
-
-
-
-
-
-
-
-
 });
 
 
