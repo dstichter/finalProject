@@ -1,12 +1,10 @@
 <div class="container">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h2 class="text-center">Search for beer</h2>
-    </div>
-  </div>
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-xs-10 col-xs-offset-1">
       <div class="panel panel-default">
+        <div class="panel-heading">
+         <h2 class="text-center">Search for Breweries</h2><p>Enter a location to find all the breweries in that area.  Then click on the brewery names to display all their beers.<!--Click on the beer name to add it to your favorites list to keep track of--></p>
+        </div>
         <div class="panel-body">
           <input type="text" ng-model='searchVal' autofocus >
           <select ng-model='searchType'>
@@ -16,19 +14,30 @@
           </select>
           <button type="button" name="button" ng-click='breweryApiCall()'>Search</button>
         </div>
+        <div class="row">
+          <div class="col-xs-6">
+           <table>
+            <ul>
+              <li ng-repeat='res in breweryApi' ng-click='beerApiCall(res.brewery.id)'>{{ res.brewery.name }}: {{ res.locality }} : {{ res.locationTypeDisplay}} : {{ res.streetAddress}}</li>
+            </ul>
+            </table>
+          </div>
+          <div class= "col-xs-6">
+            <ul>
+              <li ng-repeat='res2 in beerApi'> {{ res2.nameDisplay }} :  {{ res2.abv }} : {{ res2.description }} :::  {{ res2.available.description}}</li>
+            </ul>
+          </div>        
+        </div>
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-6">
-      <ul>
-        <li ng-repeat='res in breweryApi' ng-click='beerApiCall(res.brewery.id)'>{{ res.brewery.name }}: {{ res.locality }} : {{ res.locationTypeDisplay}} : {{ res.streetAddress}}</li>
-      </ul>
-    </div>
-    <div class="col-md-6">
-      <ul>
-        <li ng-repeat='res2 in beerApi'> {{ res2.nameDisplay }} :  {{ res2.abv }} : {{ res2.description }} :::  {{ res2.available.description}}</li>
-      </ul>
-    </div>
-  </div>
 </div>
+<br/>
+<br/> 
+<br/>
+<br/>
+<br/>
+<br/>
+<br/> 
+<br/>
+
