@@ -22,9 +22,11 @@
                       <input type="text" ng-model="createUserName" class="form-control" id="createUserName" placeholder="User Name" name="createUserName">
                     </div>
                     <button type="submit" class="btn btn-info btn-block">Register</button>
+                    <br/>
+                    <div ng-show="notRegistered" class="alert alert-danger" role="alert">The User Name or Password are invalid!</div>
                   </form>
                 </div>
-              </div>  
+              </div>
             </div>
           </div>
         </div>
@@ -37,7 +39,7 @@
   <br/>
   <br/>
   <br/>
-  
+
 
 
 
