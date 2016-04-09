@@ -18,6 +18,8 @@
                       <input type="text" ng-model="inputUserName" class="form-control" id="inputUserName" placeholder="User Name" name="inputUserName">
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                    <br/>
+                    <div ng-show="notLoggedIn" class="alert alert-danger" role="alert">The User Name or Password are invalid!</div>
                   </form>
                 </div>
               </div>
