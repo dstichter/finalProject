@@ -105,6 +105,7 @@ app.post('/createAccount', function(req, res) {
   });
 });
 
+//route to login
 app.post('/login', passport.authenticate('local'), function(req, res) {
     //console.log(req.body);
     if(req.user) {
@@ -114,10 +115,13 @@ app.post('/login', passport.authenticate('local'), function(req, res) {
     }
   });
 
-// app.post('/login', passport.authenticate('local', {
-//   successRedirect: '/',
-//   failureRedirect: '/login.html'
-// }));
+//route to log out
+app.post('/logout', function(req, res){
+  req.logOut();
+  res.send({msg: "loggedout"});
+  console.log("the logout route was hit")
+});
+
 
 app.post('/apiCall', function(req,res){
   var apiUrl = 'http://api.brewerydb.com'
