@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 var PORT = process.env.PORT || 8000;
 
 //http
-var request = require('request')
+var request = require('request');
 require('dotenv').config();
 
 
