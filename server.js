@@ -10,14 +10,28 @@ var PORT = process.env.PORT || 8000;
 
 //http
 var request = require('request')
+require('dotenv').config();
 
 
 //heroku mongoose connection
 //var db = 'mongodb://heroku_jwhnzdgf:6rlfhm48v9lq0nb6ath03qat01@ds011800.mlab.com:11800/heroku_jwhnzdgf'
 
 //local mongoose connection
-var db = 'mongodb://localhost/beer_db';
+//var db = 'mongodb://localhost/beer_db';
+
+
+if(process.env.NODE_ENV === 'production') {
+  // HEROKU DB
+  console.log(process.env.MONGOLAB_URI);
+  var db = process.env.MONGOLAB_URI;
+}
+else {
+  // LOCAL DB
+  var db = 'mongodb://localhost/beer_db';
+}
+
 mongoose.connect(db);
+
 
 var User = require('./models/user');
 
