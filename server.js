@@ -9,15 +9,29 @@ var mongoose = require('mongoose');
 var PORT = process.env.PORT || 8000;
 
 //http
-var request = require('request')
+var request = require('request');
+require('dotenv').config();
 
 
 //heroku mongoose connection
-var db = 'mongodb://heroku_jwhnzdgf:6rlfhm48v9lq0nb6ath03qat01@ds011800.mlab.com:11800/heroku_jwhnzdgf'
+//var db = 'mongodb://heroku_jwhnzdgf:6rlfhm48v9lq0nb6ath03qat01@ds011800.mlab.com:11800/heroku_jwhnzdgf'
 
 //local mongoose connection
 //var db = 'mongodb://localhost/beer_db';
+
+
+if(process.env.NODE_ENV === 'production') {
+  // HEROKU DB
+  console.log(process.env.MONGOLAB_URI);
+  var db = process.env.MONGOLAB_URI;
+}
+else {
+  // LOCAL DB
+  var db = 'mongodb://localhost/beer_db';
+}
+
 mongoose.connect(db);
+
 
 var User = require('./models/user');
 
@@ -61,7 +75,7 @@ passport.use(new passportLocal.Strategy(function(username, password, done) {
       });
     }
     else {
-      done(null, null);
+      done(null, {msg: false});
     }
   });
 }));
@@ -105,6 +119,7 @@ app.post('/createAccount', function(req, res) {
   });
 });
 
+//route to login
 app.post('/login', passport.authenticate('local'), function(req, res) {
     //console.log(req.body);
     if(req.user) {
@@ -114,10 +129,13 @@ app.post('/login', passport.authenticate('local'), function(req, res) {
     }
   });
 
-// app.post('/login', passport.authenticate('local', {
-//   successRedirect: '/',
-//   failureRedirect: '/login.html'
-// }));
+//route to log out
+app.post('/logout', function(req, res){
+  req.logOut();
+  res.send({msg: "loggedout"});
+  console.log("the logout route was hit")
+});
+
 
 app.post('/apiCall', function(req,res){
   var apiUrl = 'http://api.brewerydb.com'
