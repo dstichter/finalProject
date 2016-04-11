@@ -34,6 +34,7 @@ mongoose.connect(db);
 
 
 var User = require('./models/user');
+var Beer = require('./models/beer');
 
 //body-parser setup - middleware
 var bodyParser = require('body-parser');
