@@ -9,8 +9,6 @@ var userSchema = new Schema({
   password: {type: String, required: true, unique: true}
 });
 
-
-//attibuted to http://devsmash.com/blog/password-authentication-with-mongoose-and-bcrypt
 userSchema.pre('save', function(next) {
     var user = this;
 
@@ -38,8 +36,6 @@ userSchema.pre('save', function(next) {
 //         cb(null, isMatch);
 //     });
 // };
-
-
 
 
 module.exports = mongoose.model('User', userSchema);
