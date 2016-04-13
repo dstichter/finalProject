@@ -12,18 +12,17 @@
                     <div class="form-group">
                       <label for="email2">Email address</label>
                       <input type="email" ng-model="createEmail" class="form-control" id="email2" placeholder="Email" name="createEmail" required>
-                      <span ng-show="registerForm.createEmail.$invalid && !registerForm.createEmail.$untouched" class="help-block">An email address is required.</span>
-
+                      <span ng-show="registerForm.createEmail.$invalid && !registerForm.createEmail.$untouched">An email address is required.</span>
                     </div>
                     <div class="form-group">
                       <label for="createUserName">User Name</label>
                       <input type="text" ng-model="createUserName" class="form-control" id="createUserName" placeholder="User Name" name="createUserName" required>
-                      <span ng-show="registerForm.createUserName.$invalid && !registerForm.createUserName.$untouched" class="help-block">A user name is required.</span>
+                      <span ng-show="registerForm.createUserName.$invalid && !registerForm.createUserName.$untouched">A user name is required.</span>
                     </div>
                     <div class="form-group">
                       <label for="inputPassword2">Password</label>
                       <input type="password" ng-model="createPassword" class="form-control" id="inputPassword2" placeholder="Password" name="createPassword" required>
-                      <span ng-show="registerForm.createPassword.$invalid && !registerForm.createPassword.$untouched" class="help-block">A password name is required.</span>
+                      <span ng-show="registerForm.createPassword.$invalid && !registerForm.createPassword.$untouched">A password name is required.</span>
                     </div>
                     <button type="submit" ng-disabled="registerForm.$invalid" class="btn btn-info btn-block">Register</button>
                     <br/>
