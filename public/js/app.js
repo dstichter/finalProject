@@ -37,7 +37,8 @@ angular.module('beerApp', ['ui.router'])
           'footer@profile':{
             templateUrl: '/views/assets/footer.html'
           }
-        }
+        },
+        authenticate: true
       })
 
       .state('search', {
