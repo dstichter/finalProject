@@ -31,7 +31,7 @@ angular.module('beerApp')
       if (loginResponse.data.username) {
       $rootScope.authenticated = true;
       $rootScope.current_user = loginResponse.data.username;
-      $location.path('/');
+      $location.path('/profile');
       //console.log("the user is logged in");
       } else {
       //console.log("the user is not logged in");
