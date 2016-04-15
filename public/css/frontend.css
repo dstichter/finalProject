@@ -19,14 +19,17 @@ width: 40px ;
 padding-bottom: 15px;
 }
 
+#viewBox{
+  background-color: #c44102;
+}
+
+#searchButton{
+  margin-bottom: 50px;
+}
 
 .beerText{
   color: #FFF ;
-  text-shadow: 1px 1px #000
-}
-
-#viewBox{
-  background-color: #c44102
+  text-shadow: 1px 1px #000;
 }
 
 /*login and register css*/
