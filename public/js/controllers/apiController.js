@@ -43,4 +43,5 @@ angular.module('beerApp').controller('apiController', function($scope, $http, $r
       var result = JSON.parse(response.data);
       $scope.favBeers = result.data;
     })
+  }
 });
