@@ -1,4 +1,4 @@
-angular.module('beerApp').controller('apiController', function($scope, $http) {
+angular.module('beerApp').controller('apiController', function($scope, $http, $rootScope) {
   $scope.breweryApi = []
   $scope.beerApi = []
   $scope.breweryApiCall = function(){
@@ -30,4 +30,10 @@ angular.module('beerApp').controller('apiController', function($scope, $http) {
       $scope.beerApi = result.data;
     })
   }
+  $scope.favoriteBeer = function(id){
+    $http.post('/favorite',{user: $rootScope.current_user, beerId: id}).then(function(response){
+
+    })
+  }
+
 });

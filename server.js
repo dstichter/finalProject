@@ -145,15 +145,22 @@ app.post('/beerApiCall', function(req,res){
 app.post('/navbarApiCall', function(req,res){
   var apiUrl
   var replaced = req.body.name.replace(/ /g, '%20');
+  console.log(req.body.type);
   if(req.body.type == 'Beer'){
     apiUrl = 'http://api.brewerydb.com/v2/beers/?key=c356754ec7ae15423029d49c154921c0&name=' + replaced
   }
   if(req.body.type == 'Brewery'){
-    apiUrl = 'http://api.brewerydb.com/v2/breweries/?key=c356754ec7ae15423029d49c154921c0&name=' + replaced
+    apiUrl = 'http://api.brewerydb.com/v2/breweries/?key=c356754ec7ae15423029d49c154921c0&name=*' + replaced + '*'
   }
+  console.log('url: ' + apiUrl);
     request(apiUrl, function(err, response, body) {
       res.json(body)
     })
+})
+app.post('/favorite', function(req,res){
+  User.findOne({username: req.body.user}).then(function(response){
+    User.favoriteBeers.push(req.body.beerId)
+  })
 })
 
 
