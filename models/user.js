@@ -6,9 +6,12 @@ var SALT_WORK_FACTOR = 10;
 var userSchema = new Schema({
   username: {type: String, required: true, unique: true},
   email: {type: String, required: true},
-  password: {type: String, required: true, unique: true}
+  password: {type: String, required: true, unique: true},
+  favoriteBeers: [String]
 });
 
+
+//attibuted to http://devsmash.com/blog/password-authentication-with-mongoose-and-bcrypt
 userSchema.pre('save', function(next) {
     var user = this;
 
@@ -36,6 +39,8 @@ userSchema.pre('save', function(next) {
 //         cb(null, isMatch);
 //     });
 // };
+
+
 
 
 module.exports = mongoose.model('User', userSchema);

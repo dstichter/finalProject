@@ -182,6 +182,23 @@ app.post('/favorite', function(req,res){
     User.favoriteBeers.push(req.body.beerId)
   })
 })
+app.post('/favoriteBeers', function(req,res){
+  var ids = req.body.favBeersId
+  var idUrl
+  for(var i=0;i<ids.length;i++){
+    if(i == (ids.length -1){
+      idUrl += ids[i]
+    }
+    else{
+      idUrl += ids[i] + ','
+    }
+
+  }
+  apiUrl = 'http://api.brewerydb.com/v2/beers/?key=99a3c1bfb6b01f411310b5b729f48491&ids=' + idUrl
+  request(apiUrl, function(err,response,body){
+    res.json(body)
+  })
+})
 
 
 app.listen(PORT, function(){
