@@ -1,7 +1,8 @@
-angular.module('beerApp').controller('apiController', function($scope, $http, $rootScope) {
+angular.module('beerApp').controller('apiController', function($scope, $http, $rootScope, $stateParams) {
   $scope.breweryApi = []
   $scope.beerApi = []
   $scope.favBeers = []
+  $scope.navbarApi = []
   $scope.breweryApiCall = function(){
     $http.post('/apiCall', {
       search: $scope.searchVal,
@@ -34,15 +35,35 @@ angular.module('beerApp').controller('apiController', function($scope, $http, $r
   $scope.favoriteBeer = function(id){
     console.log('id: ' + id);
     $http.post('/favorite',{user: $rootScope.current_user, beerId: id}).then(function(response){
+
     })
   }
   $scope.favoriteBeersCall = function() {
     $http.post('/favoriteBeers', {
-      favBeersId: $scope.favBeers
+      user: $rootScope.current_user
     })
     .then(function(response){
+      console.log(response);
       var result = JSON.parse(response.data);
       $scope.favBeers = result.data;
+    })
+  }
+  $scope.removeFavorite = function(id){
+    $http.post('/removeFavorite', {
+      user: $rootScope.current_user,
+      beerId: id
+    }).then(function(response){
+      $scope.favoriteBeersCall()
+    })
+  }
+  $scope.init = function(){
+    $http.post('/navbarApiCall', {
+      name: $stateParams.search,
+      type: $stateParams.searchType
+    }).then(function(response){
+      var result = JSON.parse(response.data);
+      console.log(result);
+      $scope.navbarApi = result.data;
     })
   }
 });
