@@ -47,4 +47,12 @@ angular.module('beerApp').controller('apiController', function($scope, $http, $r
       $scope.favBeers = result.data;
     })
   }
+  $scope.removeFavorite = function(id){
+    $http.post('/removeFavorite', {
+      user: $rootScope.current_user,
+      beerId: id
+    }).then(function(response){
+      $scope.favoriteBeersCall()
+    })
+  }
 });

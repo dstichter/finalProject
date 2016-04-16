@@ -29,7 +29,7 @@
       <div class="panel panel-default">
         <div class="panel-heading">Your List of Beers</div>
         <div class="panel-body">
-          <p ng-repeat='beer in favBeers'>{{ beer.nameDisplay }}, {{ beer.abv }} ABV : {{ beer.description }} :::  {{ beer.available.description}}</p>
+          <p ng-repeat='beer in favBeers'>{{ beer.nameDisplay }}, {{ beer.abv }} ABV : {{ beer.description }} :::  {{ beer.available.description}} <button ng-click='removeFavorite(beer.id)'>Delete</button></p>
         </div>
       </div>
     </div>
