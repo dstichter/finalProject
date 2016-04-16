@@ -4,6 +4,7 @@
  margin-top: 100px;
  margin-bottom: 50px;
  background-size: 800px 800px;
+ background-repeat: no-repeat;
 }
 
 #linePic{
@@ -25,6 +26,10 @@ padding-bottom: 15px;
 
 #searchButton{
   margin-bottom: 50px;
+}
+
+#barResults{
+  padding-top: 50px;
 }
 
 .beerText{
