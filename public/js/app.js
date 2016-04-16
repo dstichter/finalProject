@@ -32,7 +32,8 @@ angular.module('beerApp', ['ui.router'])
             controller: 'apiController'
           },
           'body@profile':{
-            templateUrl: '/views/partials/profile-partial.html'
+            templateUrl: '/views/partials/profile-partial.html',
+            controller: 'apiController'
           },
           'footer@profile':{
             templateUrl: '/views/assets/footer.html'

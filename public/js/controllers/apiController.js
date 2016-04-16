@@ -34,13 +34,16 @@ angular.module('beerApp').controller('apiController', function($scope, $http, $r
   $scope.favoriteBeer = function(id){
     console.log('id: ' + id);
     $http.post('/favorite',{user: $rootScope.current_user, beerId: id}).then(function(response){
+
     })
   }
   $scope.favoriteBeersCall = function() {
+    console.log($rootScope.current_user);
     $http.post('/favoriteBeers', {
-      favBeersId: $scope.favBeers
+      user: $rootScope.current_user
     })
     .then(function(response){
+      console.log(response);
       var result = JSON.parse(response.data);
       $scope.favBeers = result.data;
     })
