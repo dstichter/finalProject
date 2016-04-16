@@ -182,6 +182,7 @@ app.post('/favorite', function(req,res){
     User.favoriteBeers.push(req.body.beerId)
   })
 })
+
 app.post('/favoriteBeers', function(req,res){
   var ids = req.body.favBeersId
   var idUrl

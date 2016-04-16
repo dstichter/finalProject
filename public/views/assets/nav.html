@@ -18,6 +18,7 @@
         <li><a href="/login" ng-hide="loggedOut" ng-controller="logoutController">Login<span class="sr-only">(current)</span></a></li>
         <li><a href="/register" ng-hide="loggedOut" ng-controller="logoutController">Register</a></li>
         <li><a href="" ng-show="loggedOut" ng-click='logout()' ng-controller="logoutController">Logout</a></li>
+        <li><a href="/profile" ng-show="loggedOut" ng-controller="logoutController">Profile</a></li>
         <li><a href="/search">Search</a></li>
       </ul>
       <form class="navbar-form navbar-right" role="search">
