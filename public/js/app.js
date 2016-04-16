@@ -108,6 +108,9 @@ angular.module('beerApp', ['ui.router'])
           'body@searchResult': {
             templateUrl: '/views/partials/searchResult.html',
             controller: 'navbarApiController'
+          },
+          'footer@login':{
+            templateUrl: '/views/assets/footer.html'
           }
         }
       })
