@@ -28,7 +28,10 @@
             <option>Brewery</option>
           </select>
         </div>
-        <button ng-click='navbarSearch()' class="btn btn-default">Find Beers</button>
+        <a ui-sref="searchResult({ search: searchName, searchType: type})">
+           <button  class="btn btn-default">Search</button>
+        </a>
+        <!-- <a ui-sref="new-qs({ portfolioId: 1 })">New (query string)</a> -->
       </form>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
