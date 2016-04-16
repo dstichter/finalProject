@@ -32,6 +32,7 @@ angular.module('beerApp').controller('apiController', function($scope, $http, $r
     })
   }
   $scope.favoriteBeer = function(id){
+    console.log('id: ' + id);
     $http.post('/favorite',{user: $rootScope.current_user, beerId: id}).then(function(response){
     })
   }
@@ -43,4 +44,5 @@ angular.module('beerApp').controller('apiController', function($scope, $http, $r
       var result = JSON.parse(response.data);
       $scope.favBeers = result.data;
     })
+  }
 });
