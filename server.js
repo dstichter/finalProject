@@ -9,17 +9,32 @@ var mongoose = require('mongoose');
 var PORT = process.env.PORT || 8000;
 
 //http
-var request = require('request')
+var request = require('request');
+require('dotenv').config();
 
 
 //heroku mongoose connection
-var db = 'mongodb://heroku_jwhnzdgf:6rlfhm48v9lq0nb6ath03qat01@ds011800.mlab.com:11800/heroku_jwhnzdgf'
+//var db = 'mongodb://heroku_jwhnzdgf:6rlfhm48v9lq0nb6ath03qat01@ds011800.mlab.com:11800/heroku_jwhnzdgf'
 
 //local mongoose connection
-// var db = 'mongodb://localhost/beer_db';
+//var db = 'mongodb://localhost/beer_db';
+
+
+if(process.env.NODE_ENV === 'production') {
+  // HEROKU DB
+  console.log(process.env.MONGOLAB_URI);
+  var db = process.env.MONGOLAB_URI;
+}
+else {
+  // LOCAL DB
+  var db = 'mongodb://localhost/beer_db';
+}
+
 mongoose.connect(db);
 
+
 var User = require('./models/user');
+var Beer = require('./models/beer');
 
 //body-parser setup - middleware
 var bodyParser = require('body-parser');
@@ -50,18 +65,18 @@ passport.use(new passportLocal.Strategy(function(username, password, done) {
     if(user) {
       bcrypt.compare(password, user.password, function(err, bcryptUser) {
         if (bcryptUser) {
-          console.log("bcrypt user exists");
+          //console.log("bcrypt user exists");
           //if password is correct authenticate the user with cookie
           done(null, user);
         }
         else {
-          console.log("bcrypt user does not exist");
-          done(null, null);
+          //console.log("bcrypt user does not exist");
+          done(null, {msg: false});
         }
       });
     }
     else {
-      done(null, null);
+      done(null, {msg: false});
     }
   });
 }));
@@ -105,39 +120,42 @@ app.post('/createAccount', function(req, res) {
   });
 });
 
+//route to login
 app.post('/login', passport.authenticate('local'), function(req, res) {
-    console.log(req.body);
+    //console.log(req.body);
     if(req.user) {
       res.json(req.user);
     } else {
       res.json({});
-      console.log("the login failed");
     }
   });
 
-// app.post('/login', passport.authenticate('local', {
-//   successRedirect: '/',
-//   failureRedirect: '/login.html'
-// }));
+//route to log out
+app.post('/logout', function(req, res){
+  req.logOut();
+  res.send({msg: "loggedout"});
+  console.log("the logout route was hit")
+});
+
 
 app.post('/apiCall', function(req,res){
   var apiUrl = 'http://api.brewerydb.com'
   var replaced = req.body.search.replace(/ /g, '%20');
   if(req.body.searchType == 'Postal Code'){
-    apiUrl += '/v2/locations/?key=c356754ec7ae15423029d49c154921c0&postalCode=' + req.body.search
+    apiUrl += '/v2/locations/?key=99a3c1bfb6b01f411310b5b729f48491&postalCode=' + req.body.search
   }
   if(req.body.searchType == 'City'){
-        apiUrl += '/v2/locations/?key=c356754ec7ae15423029d49c154921c0&locality=' + replaced
+        apiUrl += '/v2/locations/?key=99a3c1bfb6b01f411310b5b729f48491&locality=' + replaced
   }
   if(req.body.searchType == 'State'){
-        apiUrl += '/v2/locations/?key=c356754ec7ae15423029d49c154921c0&region=' + replaced
+        apiUrl += '/v2/locations/?key=99a3c1bfb6b01f411310b5b729f48491&region=' + replaced
   }
   request(apiUrl, function(err, response, body) {
     res.json(body)
   })
 })
 app.post('/beerApiCall', function(req,res){
-    var apiUrl = 'http://api.brewerydb.com/v2/brewery/'+ req.body.id +'/beers/?key=c356754ec7ae15423029d49c154921c0'
+    var apiUrl = 'http://api.brewerydb.com/v2/brewery/'+ req.body.id +'/beers/?key=99a3c1bfb6b01f411310b5b729f48491'
     request(apiUrl, function(err, response, body) {
       res.json(body)
     })
@@ -147,10 +165,12 @@ app.post('/navbarApiCall', function(req,res){
   var replaced = req.body.name.replace(/ /g, '%20');
   console.log(req.body.type);
   if(req.body.type == 'Beer'){
-    apiUrl = 'http://api.brewerydb.com/v2/beers/?key=c356754ec7ae15423029d49c154921c0&name=' + replaced
+    apiUrl = 'http://api.brewerydb.com/v2/beers/?key=99a3c1bfb6b01f411310b5b729f48491&name=' + replaced
   }
   if(req.body.type == 'Brewery'){
+
     apiUrl = 'http://api.brewerydb.com/v2/breweries/?key=c356754ec7ae15423029d49c154921c0&name=*' + replaced + '*'
+
   }
   console.log('url: ' + apiUrl);
     request(apiUrl, function(err, response, body) {

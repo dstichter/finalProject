@@ -1,36 +1,48 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-6 col-md-offset-3">
+      <div class="col-xs-6 col-xs-offset-3">
         <div class="panel panel-default">
           <div class="panel-heading"><h3>Register</h3></div>
           <div class="row">
-            <div class="col-md-10 col-md-offset-1">
+            <div class="col-xs-10 col-xs-offset-1">
               <div class="panel-body">
                 <div class="row" ng-controller="accountController">
-                  <form ng-submit="createAccount()">
+                  <form name="registerForm" ng-submit="createAccount()" novalidate>
                     <div class="form-group">
                       <label for="email2">Email address</label>
-                      <input type="email" ng-model="createEmail" class="form-control" id="email2" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                      <label for="inputPassword2">Password</label>
-                      <input type="password" ng-model="createPassword" class="form-control" id="inputPassword2" placeholder="Password">
+                      <input type="email" ng-model="createEmail" class="form-control" id="email2" placeholder="Email" name="createEmail" required>
+                      <span ng-show="registerForm.createEmail.$invalid && !registerForm.createEmail.$untouched">An email address is required.</span>
                     </div>
                     <div class="form-group">
                       <label for="createUserName">User Name</label>
-                      <input type="text" ng-model="createUserName" class="form-control" id="createUserName" placeholder="User Name" name="createUserName">
+                      <input type="text" ng-model="createUserName" class="form-control" id="createUserName" placeholder="User Name" name="createUserName" required>
+                      <span ng-show="registerForm.createUserName.$invalid && !registerForm.createUserName.$untouched">A user name is required.</span>
                     </div>
-                    <button type="submit" class="btn btn-info btn-block">Register</button>
+                    <div class="form-group">
+                      <label for="inputPassword2">Password</label>
+                      <input type="password" ng-model="createPassword" class="form-control" id="inputPassword2" placeholder="Password" name="createPassword" required>
+                      <span ng-show="registerForm.createPassword.$invalid && !registerForm.createPassword.$untouched">A password name is required.</span>
+                    </div>
+                    <button type="submit" ng-disabled="registerForm.$invalid" class="btn btn-info btn-block">Register</button>
+                    <br/>
+                    <div ng-show="notRegistered"  class="alert alert-danger" role="alert">The User Name or Password are invalid!</div>
                   </form>
                 </div>
-              </div>  
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+
 
 
 
