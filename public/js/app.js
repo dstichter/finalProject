@@ -21,6 +21,26 @@ angular.module('beerApp', ['ui.router'])
         }
       })
 
+      .state('profile', {
+        url: '/profile',
+        views: {
+          '': {
+            templateUrl: 'views/main.html'
+          },
+          'nav@profile': {
+            templateUrl: '/views/assets/nav.html',
+            controller: 'apiController'
+          },
+          'body@profile':{
+            templateUrl: '/views/partials/profile-partial.html'
+          },
+          'footer@profile':{
+            templateUrl: '/views/assets/footer.html'
+          }
+        },
+        authenticate: true
+      })
+
       .state('search', {
         url: '/search',
         views: {

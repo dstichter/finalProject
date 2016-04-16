@@ -15,10 +15,12 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="/login">Login<span class="sr-only">(current)</span></a></li>
-        <li><a href="/register">Register</a></li>
+        <li><a href="/login" ng-hide="loggedOut" ng-controller="logoutController">Login<span class="sr-only">(current)</span></a></li>
+        <li><a href="/register" ng-hide="loggedOut" ng-controller="logoutController">Register</a></li>
+        <li><a href="" ng-show="loggedOut" ng-click='logout()' ng-controller="logoutController">Logout</a></li>
+        <li><a href="/search">Search</a></li>
       </ul>
-      <form class="navbar-form navbar-left" role="search">
+      <form class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input ng-model='searchName' type="text" class="form-control" placeholder="Enter a location">
           <select ng-model='type'>
