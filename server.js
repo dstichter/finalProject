@@ -201,11 +201,17 @@ app.post('/favoriteBeers', function(req,res){
     }
     apiUrl = 'http://api.brewerydb.com/v2/beers/?key=99a3c1bfb6b01f411310b5b729f48491&ids=' + idUrl
     request(apiUrl, function(err,response,body){
-      console.log(JSON.parse(body));
       res.json(body)
     })
   })
-
+})
+app.post('/removeFavorite',function(req,res){
+  console.log(req.body.beerId);
+  User.update({username: req.body.user},{$pull: {favoriteBeers: req.body.beerId}}).then(function(response){
+      console.log(response);
+      console.log('Done');
+        res.end()
+  })
 })
 
 
