@@ -76,6 +76,21 @@ angular.module('beerApp', ['ui.router'])
         }
       })
 
+      .state('searchResult', {
+        url: '/searchResult?search&searchType',
+        views: {
+          '': {
+            templateUrl: 'views/main.html'
+          },
+          'nav@searchResult': {
+            templateUrl: '/views/assets/nav.html'
+          },
+          'body@searchResult': {
+            templateUrl: '/views/partials/searchResult.html',
+            controller: 'navbarApiController'
+          }
+        }
+      })
     $locationProvider.html5Mode({
       enabled: true,
       requireBase: false
