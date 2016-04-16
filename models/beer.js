@@ -1,8 +1,9 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var beerSchema = new Schema({
+var Beers = new Schema({
 
 });
 
-module.exports = mongoose.model('Beer', beerSchema);
+var Beer = mongoose.model('Beer', Beers);
+module.exports = Beer;
