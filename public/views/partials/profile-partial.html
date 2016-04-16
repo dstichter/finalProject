@@ -28,7 +28,7 @@
       <div class="panel panel-default">
         <div class="panel-heading">Your List of Beers</div>
         <div class="panel-body">
-          <p>I am your list of beers</p>
+          <p ng-repeat='beer in favBeers'>{{ beer.nameDisplay }}, {{ beer.abv }} ABV : {{ beer.description }} :::  {{ beer.available.description}}</p>
         </div>
       </div>
     </div>

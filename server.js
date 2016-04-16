@@ -163,15 +163,41 @@ app.post('/beerApiCall', function(req,res){
 app.post('/navbarApiCall', function(req,res){
   var apiUrl
   var replaced = req.body.name.replace(/ /g, '%20');
+  console.log(req.body.type);
   if(req.body.type == 'Beer'){
     apiUrl = 'http://api.brewerydb.com/v2/beers/?key=99a3c1bfb6b01f411310b5b729f48491&name=' + replaced
   }
   if(req.body.type == 'Brewery'){
-    apiUrl = 'http://api.brewerydb.com/v2/breweries/?key=99a3c1bfb6b01f411310b5b729f48491&name=' + replaced
+
+    apiUrl = 'http://api.brewerydb.com/v2/breweries/?key=c356754ec7ae15423029d49c154921c0&name=*' + replaced + '*'
+
   }
+  console.log('url: ' + apiUrl);
     request(apiUrl, function(err, response, body) {
       res.json(body)
     })
+})
+app.post('/favorite', function(req,res){
+  User.findOne({username: req.body.user}).then(function(response){
+    User.favoriteBeers.push(req.body.beerId)
+  })
+})
+app.post('/favoriteBeers', function(req,res){
+  var ids = req.body.favBeersId
+  var idUrl
+  for(var i=0;i<ids.length;i++){
+    if(i == (ids.length -1){
+      idUrl += ids[i]
+    }
+    else{
+      idUrl += ids[i] + ','
+    }
+
+  }
+  apiUrl = 'http://api.brewerydb.com/v2/beers/?key=99a3c1bfb6b01f411310b5b729f48491&ids=' + idUrl
+  request(apiUrl, function(err,response,body){
+    res.json(body)
+  })
 })
 
 
