@@ -186,7 +186,7 @@ app.post('/favoriteBeers', function(req,res){
   var ids = req.body.favBeersId
   var idUrl
   for(var i=0;i<ids.length;i++){
-    if(i == (ids.length -1){
+    if(i == (ids.length -1)){
       idUrl += ids[i]
     }
     else{
