@@ -38,7 +38,6 @@ angular.module('beerApp').controller('apiController', function($scope, $http, $r
     })
   }
   $scope.favoriteBeersCall = function() {
-    console.log($rootScope.current_user);
     $http.post('/favoriteBeers', {
       user: $rootScope.current_user
     })

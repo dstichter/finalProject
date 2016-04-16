@@ -189,9 +189,8 @@ app.post('/favorite', function(req,res){
 
 app.post('/favoriteBeers', function(req,res){
   User.findOne({username: req.body.user}).then(function(response){
-    console.log(response);
     var ids = response.favoriteBeers
-    var idUrl
+    var idUrl = ''
     for(var i=0;i<ids.length;i++){
       if(i == (ids.length - 1)){
         idUrl += ids[i]
@@ -200,9 +199,9 @@ app.post('/favoriteBeers', function(req,res){
         idUrl += ids[i] + ','
       }
     }
-
     apiUrl = 'http://api.brewerydb.com/v2/beers/?key=99a3c1bfb6b01f411310b5b729f48491&ids=' + idUrl
     request(apiUrl, function(err,response,body){
+      console.log(JSON.parse(body));
       res.json(body)
     })
   })
