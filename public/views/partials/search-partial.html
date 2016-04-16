@@ -6,13 +6,15 @@
          <h2 class="text-center">Search for Breweries</h2><p>Enter a location to find all the breweries in that area.  Then click on the brewery names to display all their beers.<!--Click on the beer name to add it to your favorites list to keep track of--></p>
         </div>
         <div class="panel-body">
-          <input type="text" ng-model='searchVal' autofocus >
-          <select ng-model='searchType'>
+          <div class="col-xs-6 col-xs-offset-3">
+          <input type="text" ng-model='searchVal' class = "form-control" placeholder="Enter a location" autofocus>
+          <select ng-model='searchType' class="form-control">
             <option>Postal Code</option>
             <option>City</option>
             <option>State</option>
           </select>
           <button type="button" name="button" ng-click='breweryApiCall()'>Search</button>
+          </div>
         </div>
         <div class="row">
           <div class="col-xs-6">
