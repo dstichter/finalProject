@@ -32,7 +32,8 @@ angular.module('beerApp', ['ui.router'])
             controller: 'apiController'
           },
           'body@profile':{
-            templateUrl: '/views/partials/profile-partial.html'
+            templateUrl: '/views/partials/profile-partial.html',
+            controller: 'apiController'
           },
           'footer@profile':{
             templateUrl: '/views/assets/footer.html'
@@ -106,10 +107,10 @@ angular.module('beerApp', ['ui.router'])
             templateUrl: '/views/assets/nav.html'
           },
           'body@searchResult': {
-            templateUrl: '/views/partials/searchResult.html',
-            controller: 'navbarApiController'
+            templateUrl: '/views/partials/search-partial.html',
+            controller: 'apiController'
           },
-          'footer@login':{
+          'footer@searchResult':{
             templateUrl: '/views/assets/footer.html'
           }
         }
