@@ -24,7 +24,7 @@
           </div>
           <div class= "col-xs-6">
             <ul>
-              <li ng-repeat='res2 in beerApi' ng-click="" > {{ res2.nameDisplay }}, {{ res2.abv }} ABV : {{ res2.description }} :::  {{ res2.available.description}}<br/><br/></li>
+              <li ng-repeat='res2 in beerApi' ng-click="favoriteBeer(res2.id)" > {{ res2.nameDisplay }}, {{ res2.abv }} ABV : {{ res2.description }} :::  {{ res2.available.description}}<br/><br/></li>
             </ul>
           </div>
         </div>
