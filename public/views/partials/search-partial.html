@@ -30,6 +30,13 @@
             </ul>
           </div>
         </div>
+        <div ng-init='init()' class="row">
+          <div class="col-md-6">
+            <ul>
+              <li ng-repeat='res3 in navbarApi'>{{ res3.name }}: {{ res3.locality }} : {{ res3.locationTypeDisplay}} : {{ res3.streetAddress}}</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>

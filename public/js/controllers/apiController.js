@@ -1,7 +1,8 @@
-angular.module('beerApp').controller('apiController', function($scope, $http, $rootScope) {
+angular.module('beerApp').controller('apiController', function($scope, $http, $rootScope, $stateParams) {
   $scope.breweryApi = []
   $scope.beerApi = []
   $scope.favBeers = []
+  $scope.navbarApi = []
   $scope.breweryApiCall = function(){
     $http.post('/apiCall', {
       search: $scope.searchVal,
@@ -53,6 +54,16 @@ angular.module('beerApp').controller('apiController', function($scope, $http, $r
       beerId: id
     }).then(function(response){
       $scope.favoriteBeersCall()
+    })
+  }
+  $scope.init = function(){
+    $http.post('/navbarApiCall', {
+      name: $stateParams.search,
+      type: $stateParams.searchType
+    }).then(function(response){
+      var result = JSON.parse(response.data);
+      console.log(result);
+      $scope.navbarApi = result.data;
     })
   }
 });
