@@ -10,6 +10,7 @@ angular.module('beerApp').controller('navbarApiController', function($scope, $ht
       var result = JSON.parse(response.data);
       console.log(result);
       $scope.navbarApi = result.data;
+      window.scrollTo(0,500);
     })
   }
 });
