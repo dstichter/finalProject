@@ -5,7 +5,7 @@
  margin-bottom: 50px;
  background-size: 900px 700px;
  background-repeat: no-repeat;
- border-color: #FFF;
+ border-color: #FDF3E7;
 }
 
 #linePic{
@@ -13,7 +13,7 @@
   background-position: 77% 37%;
   background-size: 1200px 1200px;
   background-repeat: no-repeat;
-  border-color: #FFF;
+  border-color: #FDF3E7;
   padding-top: 250px;
 }
 
@@ -24,7 +24,7 @@ padding-bottom: 15px;
 }
 
 #viewBox{
-  background-color: #c44102;
+  background-color: #C63D0F;
 }
 
 #searchButton{
@@ -36,12 +36,17 @@ padding-bottom: 15px;
 }
 
 .jumboText{
-  background-color: #c44102;
+  background-color: #C63D0F;
   margin-top: 2000px;
 }
 
 .beerText{
-  background-color: #c44102;
+  background-color: #C63D0F;
+}
+
+.navbar-fixed-top, #footer{
+  background-color: #FDF3E7;
+
 }
 
 /*login and register css*/
@@ -70,5 +75,5 @@ body {
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 60px;
-  background-color: #c44102
+  background-color: #FDF3E7;
 }
