@@ -65,12 +65,10 @@ passport.use(new passportLocal.Strategy(function(username, password, done) {
     if(user) {
       bcrypt.compare(password, user.password, function(err, bcryptUser) {
         if (bcryptUser) {
-          //console.log("bcrypt user exists");
           //if password is correct authenticate the user with cookie
           done(null, user);
         }
         else {
-          //console.log("bcrypt user does not exist");
           done(null, {msg: false});
         }
       });
@@ -122,7 +120,6 @@ app.post('/createAccount', function(req, res) {
 
 //route to login
 app.post('/login', passport.authenticate('local'), function(req, res) {
-    //console.log(req.body);
     if(req.user) {
       res.json(req.user);
     } else {
