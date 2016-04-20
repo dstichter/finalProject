@@ -10,8 +10,6 @@ var userSchema = new Schema({
   favoriteBeers: [String]
 });
 
-
-//attibuted to http://devsmash.com/blog/password-authentication-with-mongoose-and-bcrypt
 userSchema.pre('save', function(next) {
     var user = this;
 
@@ -32,15 +30,5 @@ userSchema.pre('save', function(next) {
         });
     });
 });
-
-// UserSchema.methods.comparePassword = function(candidatePassword, cb) {
-//     bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-//         if (err) return cb(err);
-//         cb(null, isMatch);
-//     });
-// };
-
-
-
 
 module.exports = mongoose.model('User', userSchema);
