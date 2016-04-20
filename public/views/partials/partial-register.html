@@ -24,7 +24,7 @@
                       <input type="password" ng-model="createPassword" class="form-control" id="inputPassword2" placeholder="Password" name="createPassword" required>
                       <span ng-show="registerForm.createPassword.$invalid && !registerForm.createPassword.$untouched">A password name is required.</span>
                     </div>
-                    <button type="submit" ng-disabled="registerForm.$invalid" class="btn btn-info btn-block">Register</button>
+                    <button type="submit" ng-disabled="registerForm.$invalid" class="btn btn-primary btn-block">Register</button>
                     <br/>
                     <div ng-show="notRegistered"  class="alert alert-danger" role="alert">The User Name or Password are invalid!</div>
                   </form>
