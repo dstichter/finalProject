@@ -44,9 +44,9 @@ padding-bottom: 15px;
   background-color: #C63D0F;
 }
 
-.navbar-fixed-top, #footer{
+.navbar-fixed-top, .user-form-body{
   background-color: #FDF3E7;
-
+  border-color: #FDF3E7
 }
 
 /*login and register css*/
