@@ -49,6 +49,10 @@ padding-bottom: 15px;
   border-color: #FDF3E7
 }
 
+.panel-default>.user-form-head{
+  background-color: #f9e4cc
+}
+
 /*login and register css*/
 .panel {
 	margin-top: 100px;
