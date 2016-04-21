@@ -40,17 +40,23 @@ padding-bottom: 15px;
   margin-top: 2000px;
 }
 
-.beerText{
+.beerText {
   background-color: #C63D0F;
 }
 
-.navbar-fixed-top, .user-form-body{
-  background-color: #FDF3E7;
+.navbar-fixed-top{
+  background-color: #f9dfc0;
   border-color: #FDF3E7
 }
 
-.panel-default>.user-form-head{
-  background-color: #f9e4cc
+.user-form-body{
+  background-color: #FDF3E7
+}
+
+.panel-default>.panel-heading {
+    color: #333;
+    background-color: #f9dfc0;
+    border-color: #ddd;
 }
 
 /*login and register css*/
@@ -79,5 +85,5 @@ body {
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 60px;
-  background-color: #FDF3E7;
+  background-color: #f9dfc0;
 }
