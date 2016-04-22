@@ -14,7 +14,7 @@ require('dotenv').config();
 
 
 //heroku mongoose connection
-//var db = 'mongodb://heroku_jwhnzdgf:6rlfhm48v9lq0nb6ath03qat01@ds011800.mlab.com:11800/heroku_jwhnzdgf'
+//var db = 'mongodb://'
 
 //local mongoose connection
 //var db = 'mongodb://localhost/beer_db';
