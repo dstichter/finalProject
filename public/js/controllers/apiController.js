@@ -3,6 +3,8 @@ angular.module('beerApp').controller('apiController', function($scope, $http, $r
   $scope.beerApi = []
   $scope.favBeers = []
   $scope.navbarApi = []
+  $scope.searchName = ''
+  $scope.type = ''
   $scope.breweryApiCall = function(){
     $http.post('/apiCall', {
       search: $scope.searchVal,
@@ -10,7 +12,7 @@ angular.module('beerApp').controller('apiController', function($scope, $http, $r
     }).then(function(response){
       var result = JSON.parse(response.data);
       console.log(result);
-      apiResults.store(result)
+      apiResults.store(result, 'brewery')
       $scope.breweryApi = result.data;
     })
   }
@@ -20,6 +22,7 @@ angular.module('beerApp').controller('apiController', function($scope, $http, $r
     }).then(function(response){
       var result = JSON.parse(response.data);
       console.log(result);
+      apiResults.store(result, 'beer')
       $scope.beerApi = result.data;
     })
   }
@@ -30,6 +33,7 @@ angular.module('beerApp').controller('apiController', function($scope, $http, $r
     }).then(function(response){
       var result = JSON.parse(response.data);
       console.log(result);
+      apiResults.store(result, 'navbar')
       $scope.beerApi = result.data;
     })
   }

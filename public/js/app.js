@@ -49,7 +49,8 @@ angular.module('beerApp', ['ui.router'])
             templateUrl: 'views/main.html'
           },
           'nav@search': {
-            templateUrl: '/views/assets/nav.html'
+            templateUrl: '/views/assets/nav.html',
+            controller: 'apiController'
           },
           'body@search': {
             templateUrl: '/views/partials/search-partial.html',
@@ -72,7 +73,8 @@ angular.module('beerApp', ['ui.router'])
             templateUrl: 'views/main.html'
           },
           'nav@login': {
-            templateUrl: '/views/assets/nav.html'
+            templateUrl: '/views/assets/nav.html',
+            controller: 'apiController'
           },
           'body@login': {
             templateUrl: '/views/partials/partial-login.html'
@@ -90,7 +92,8 @@ angular.module('beerApp', ['ui.router'])
             templateUrl: 'views/main.html'
           },
           'nav@register': {
-            templateUrl: '/views/assets/nav.html'
+            templateUrl: '/views/assets/nav.html',
+            controller: 'apiController'
           },
           'body@register': {
             templateUrl: '/views/partials/partial-register.html'
@@ -102,13 +105,14 @@ angular.module('beerApp', ['ui.router'])
       })
 
       .state('searchResult', {
-        url: '/searchResult?search&searchType',
+        url: '/searchResult',
         views: {
           '': {
             templateUrl: 'views/main.html'
           },
           'nav@searchResult': {
-            templateUrl: '/views/assets/nav.html'
+            templateUrl: '/views/assets/nav.html',
+            controller: 'apiController'
           },
           'body@searchResult': {
             templateUrl: '/views/partials/search-partial.html',
@@ -116,7 +120,7 @@ angular.module('beerApp', ['ui.router'])
           },
           'results@searchResult': {
             templateUrl: '/views/partials/search-result-partial.html',
-            controller: 'apiController'
+            controller: 'resultsController'
           },
           'footer@searchResult':{
             templateUrl: '/views/assets/footer.html'
@@ -129,14 +133,32 @@ angular.module('beerApp', ['ui.router'])
     });
   })
   .factory('apiResults', function(){
-    var results
+    var beerApi
+    var breweryApi
+    var navbarApi
       return {
-          store: function(res){
-            results = res
+          store: function(res,input){
+            if(input == 'beer'){
+              beerApi = res
+            }
+            if(input == 'brewery'){
+              breweryApi = res
+            }
+            if(input == 'navbar'){
+              navbarApi = res
+            }
               return 'Done';
           },
-          get: function(){
-              return results;
+          get: function(input){
+            if(input == 'beer'){
+              return beerApi
+            }
+            if(input == 'brewery'){
+              return breweryApi
+            }
+            if(input == 'navbar'){
+              return navbarApi
+            }
           }
       }
   });
