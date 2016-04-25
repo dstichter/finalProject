@@ -1,4 +1,4 @@
-angular.module('beerApp').controller('apiController', function($scope, $http, $rootScope, $stateParams) {
+angular.module('beerApp').controller('apiController', function($scope, $http, $rootScope, $stateParams, apiResults) {
   $scope.breweryApi = []
   $scope.beerApi = []
   $scope.favBeers = []
@@ -10,6 +10,7 @@ angular.module('beerApp').controller('apiController', function($scope, $http, $r
     }).then(function(response){
       var result = JSON.parse(response.data);
       console.log(result);
+      apiResults.store(result)
       $scope.breweryApi = result.data;
     })
   }

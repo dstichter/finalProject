@@ -1,0 +1,36 @@
+<br/>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+     <table>
+      <ul>
+        <li ng-repeat='res in breweryApi' ng-click='beerApiCall(res.brewery.id)'>{{ res.brewery.name }} - {{ res.locationTypeDisplay}} at {{ res.streetAddress}} , {{ res.locality }} <br/><br/></li>
+      </ul>
+      </table>
+    </div>
+    <div class= "col-md-6">
+      <h1 >Test</h1>
+
+      <ul>
+        <li ng-repeat='res2 in beerApi' ng-click="favoriteBeer(res2.id)" > {{ res2.nameDisplay }}, {{ res2.abv }} ABV : {{ res2.description }} :::  {{ res2.available.description}}<br/><br/></li>
+      </ul>
+    </div>
+  </div>
+  <!-- <div ng-init='init()' class="row">
+    <div class="col-md-6">
+      <ul>
+        <li ng-repeat='res3 in navbarApi'>{{ res3.name }}: {{ res3.locality }} : {{ res3.locationTypeDisplay}} : {{ res3.streetAddress}}</li>
+      </ul>
+    </div>
+  </div> -->
+</div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
