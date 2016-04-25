@@ -1,9 +1,7 @@
 #beerPic{
  background-image: url('/images/beerPaddle.jpg');
  padding-top: 250px;
- margin-top: 100px;
- margin-bottom: 50px;
- background-size: 900px 700px;
+ background-size: 100%;
  background-repeat: no-repeat;
  border-color: #FDF3E7;
 }
@@ -37,7 +35,7 @@ padding-bottom: 15px;
 
 .jumboText{
   background-color: #C63D0F;
-  margin-top: 2000px;
+  margin-top: 200px;
 }
 
 .beerText {
