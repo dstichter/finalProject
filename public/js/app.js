@@ -55,6 +55,10 @@ angular.module('beerApp', ['ui.router'])
             templateUrl: '/views/partials/search-partial.html',
             controller: 'apiController'
           },
+          'results@search': {
+            templateUrl: '/views/partials/search-result-partial.html',
+            controller: 'resultsController'
+          },
           'footer@search':{
             templateUrl: '/views/assets/footer.html'
           }
@@ -110,6 +114,10 @@ angular.module('beerApp', ['ui.router'])
             templateUrl: '/views/partials/search-partial.html',
             controller: 'apiController'
           },
+          'results@searchResult': {
+            templateUrl: '/views/partials/search-result-partial.html',
+            controller: 'apiController'
+          },
           'footer@searchResult':{
             templateUrl: '/views/assets/footer.html'
           }
@@ -119,4 +127,16 @@ angular.module('beerApp', ['ui.router'])
       enabled: true,
       requireBase: false
     });
+  })
+  .factory('apiResults', function(){
+    var results
+      return {
+          store: function(res){
+            results = res
+              return 'Done';
+          },
+          get: function(){
+              return results;
+          }
+      }
   });
