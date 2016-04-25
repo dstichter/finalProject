@@ -2,8 +2,8 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-6 col-xs-offset-3">
-        <div class="panel panel-default">
-          <div class="panel-heading"><h3>Register</h3></div>
+        <div class="panel panel-default user-form-body">
+          <div class="panel-heading user-form-head"><h3>Register</h3></div>
           <div class="row">
             <div class="col-xs-10 col-xs-offset-1">
               <div class="panel-body">
@@ -24,7 +24,7 @@
                       <input type="password" ng-model="createPassword" class="form-control" id="inputPassword2" placeholder="Password" name="createPassword" required>
                       <span ng-show="registerForm.createPassword.$invalid && !registerForm.createPassword.$untouched">A password name is required.</span>
                     </div>
-                    <button type="submit" ng-disabled="registerForm.$invalid" class="btn btn-info btn-block">Register</button>
+                    <button type="submit" ng-disabled="registerForm.$invalid" class="btn btn-primary btn-block">Register</button>
                     <br/>
                     <div ng-show="notRegistered"  class="alert alert-danger" role="alert">The User Name or Password are invalid!</div>
                   </form>
@@ -49,7 +49,16 @@
   <br/>
   <br/>
   <br/>
-
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
 
 
 

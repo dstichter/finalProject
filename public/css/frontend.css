@@ -1,10 +1,11 @@
 #beerPic{
  background-image: url('/images/beerPaddle.jpg');
- padding-top: 200px;
+ padding-top: 250px;
  margin-top: 100px;
  margin-bottom: 50px;
- background-size: 800px 800px;
+ background-size: 900px 700px;
  background-repeat: no-repeat;
+ border-color: #FDF3E7;
 }
 
 #linePic{
@@ -12,6 +13,8 @@
   background-position: 77% 37%;
   background-size: 1200px 1200px;
   background-repeat: no-repeat;
+  border-color: #FDF3E7;
+  padding-top: 250px;
 }
 
 #chaserIcon { 
@@ -21,7 +24,7 @@ padding-bottom: 15px;
 }
 
 #viewBox{
-  background-color: #c44102;
+  background-color: #C63D0F;
 }
 
 #searchButton{
@@ -32,9 +35,28 @@ padding-bottom: 15px;
   padding-top: 75px;
 }
 
-.beerText{
-  color: #FFF ;
-  text-shadow: 1px 1px #000;
+.jumboText{
+  background-color: #C63D0F;
+  margin-top: 2000px;
+}
+
+.beerText {
+  background-color: #C63D0F;
+}
+
+.navbar-fixed-top{
+  background-color: #f9dfc0;
+  border-color: #FDF3E7
+}
+
+.user-form-body{
+  background-color: #FDF3E7
+}
+
+.panel-default>.panel-heading {
+    color: #333;
+    background-color: #f9dfc0;
+    border-color: #ddd;
 }
 
 /*login and register css*/
@@ -63,5 +85,5 @@ body {
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 60px;
-  background-color: #c44102
+  background-color: #f9dfc0;
 }
