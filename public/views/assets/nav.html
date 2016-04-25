@@ -29,7 +29,7 @@
             <option>Brewery</option>
           </select>
         </div>
-        <a ui-sref="searchResult({ search: searchName, searchType: type})">
+        <a ng-click='navbarSearch()' ui-sref="searchResult">
            <button  class="btn btn-default">Search</button>
         </a>
         <!-- <a ui-sref="new-qs({ portfolioId: 1 })">New (query string)</a> -->
