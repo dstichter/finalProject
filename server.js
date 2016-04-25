@@ -14,7 +14,7 @@ require('dotenv').config();
 
 
 //heroku mongoose connection
-//var db = 'mongodb://heroku_jwhnzdgf:6rlfhm48v9lq0nb6ath03qat01@ds011800.mlab.com:11800/heroku_jwhnzdgf'
+//var db = 'mongodb://'
 
 //local mongoose connection
 //var db = 'mongodb://localhost/beer_db';
@@ -65,12 +65,10 @@ passport.use(new passportLocal.Strategy(function(username, password, done) {
     if(user) {
       bcrypt.compare(password, user.password, function(err, bcryptUser) {
         if (bcryptUser) {
-          //console.log("bcrypt user exists");
           //if password is correct authenticate the user with cookie
           done(null, user);
         }
         else {
-          //console.log("bcrypt user does not exist");
           done(null, {msg: false});
         }
       });
@@ -122,7 +120,6 @@ app.post('/createAccount', function(req, res) {
 
 //route to login
 app.post('/login', passport.authenticate('local'), function(req, res) {
-    //console.log(req.body);
     if(req.user) {
       res.json(req.user);
     } else {

@@ -1,16 +1,16 @@
 <div class="container" ng-init='favoriteBeersCall()'>
   <div class="row">
     <div class="col-xs-8">
-      <div class="panel panel-default">
-      <div class="panel-heading">Your Profile</div>
+      <div class="panel panel-default user-form-body">
+      <div class="panel-heading user-form-head">Your Profile</div>
         <div class="panel-body">
           <p>I'm your profile</p>
         </div>
       </div>
     </div>
     <div class="col-xs-3 col-xs-offset-1">
-      <div class="panel panel-default">
-        <div class="panel-heading" style="text-align: center">Change Account Information
+      <div class="panel panel-default user-form-body">
+        <div class="panel-heading user-form-head" style="text-align: center">Change Account Information
         </div>
         <div class="panel-body">
           <form>
@@ -26,8 +26,8 @@
   </div>
   <div class="row">
     <div class="col-xs-8">
-      <div class="panel panel-default">
-        <div class="panel-heading">Your List of Beers</div>
+      <div class="panel panel-default user-form-body">
+        <div class="panel-heading user-form-head">Your List of Beers</div>
         <div class="panel-body">
           <p ng-repeat='beer in favBeers'>{{ beer.nameDisplay }}, {{ beer.abv }} ABV : {{ beer.description }} :::  {{ beer.available.description}} <button ng-click='removeFavorite(beer.id)'>Delete</button></p>
         </div>
@@ -35,6 +35,16 @@
     </div>
   </div>
 </div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 <br/>
 <br/>
 <br/>
