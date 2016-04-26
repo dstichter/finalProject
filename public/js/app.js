@@ -133,9 +133,9 @@ angular.module('beerApp', ['ui.router'])
     });
   })
   .factory('apiResults', function(){
-    var beerApi
-    var breweryApi
-    var navbarApi
+    var beerApi = []
+    var breweryApi = []
+    var navbarApi = []
       return {
           store: function(res,input){
             if(input == 'beer'){
@@ -146,6 +146,11 @@ angular.module('beerApp', ['ui.router'])
             }
             if(input == 'navbar'){
               navbarApi = res
+            }
+            if(input == 'all'){
+              beerApi = []
+              breweryApi = []
+              navbarApi = []
             }
               return 'Done';
           },
