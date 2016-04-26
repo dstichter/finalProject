@@ -19,7 +19,7 @@
   <div class="row">
     <div class="col-md-6">
       <ul>
-        <li ng-repeat='res3 in navbarApi'>{{ res3.name }}: {{ res3.locality }} : {{ res3.locationTypeDisplay}} : {{ res3.streetAddress}}</li>
+        <li ng-repeat='res3 in navbarApi'>{{ res3.name }}, {{res3.abv}} {{ res3.locality }} : {{res3.description}} {{ res3.locationTypeDisplay}} : {{res3.available.description}} {{ res3.streetAddress}}</li>
       </ul>
     </div>
   </div>
